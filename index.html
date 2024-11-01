@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire Amélioré</title>
+    <style>
+        /* Style de base */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+      
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 70%;
+            margin-right: 40px; /* Espacement large avec les encadrés */
+        }
+
+        fieldset {
+            border: 2px solid #DA291C;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #DA291C;
+            margin-bottom: 10px;
+        }
+      
+        .inline-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-top: 8px;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        input[type="date"],
+        input[type="checkbox"],
+        input[type="radio"],
+        button,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="number"]:focus,
+        input[type="text"]:focus,
+        input[type="date"]:focus {
+            border-color: #0077cc;
+            outline: none;
+        }
+
+        button {
+            background-color: #DA291C;
+            color: #ffffff;
+            font-size: 1em;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #9F1E15;
+        }
+
+        p {
+            color: #666;
+            margin: 8px 0;
+        }
+
+        /* Style de la section 2 pour disposition en deux colonnes */
+        .section-2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .section-2 .form-elements {
+            width: 60%;
+        }
+
+        .section-2 .image-container {
+            width: 35%;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Ajustement des champs courts */
+        .short-inputs {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .short-input {
+            width: calc(50% - 5px);
+        }
+
+        /* Espacement des boutons radio et case à cocher */
+        .options {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+      
+        .section-3-elements {
+            display: none;
+        }
+      
+        /* Style pour les lignes dynamiques */
+        .dynamic-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        .dynamic-row input[type="text"] {
+            width: calc(50% - 20px);
+        }
+
+        .remove-btn {
+            color: #ff0000;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .remove-btn:hover {
+            color: #cc0000;
+        }
+      
+       /* Encadrés fixes à droite */
+        .sidebar {
+            position: fixed;
+            right: 30px;
+            top: 30px;
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .box1 {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            height: auto;
+            overflow-y: auto;
+        }
+      
+        .box2 {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            height: auto;
+            overflow-y: auto;
+        }
+      
+        .box-title {
+          font-size: 20px;
+          font-weight: bold;
+          border-bottom: 1px solid black;
+          padding-bottom: 10px;
+        }
+      
+        .box-section1 {
+          font-size: 20px;
+          margin-top: 20px;
+        }
+      
+        .box-section2 {
+          font-size: 20px;
+          margin-top: 30px;
+        }
+      
+        .box-sectionTotal {
+          font-size: 20px;
+          background-color: #EDEDED;
+          padding: 2px;
+          padding-left: 15px;
+          border-radius: 10px;
+          margin-top: 30px;
+          font-weight: bold
+        }
+      
+      /* Style pour les boutons sous les encadrés */
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+            margin-top: 0px;
+        }
+
+        .icon {
+            font-size: 1.2em;
+        }
+      
+      /* SERVICE */
+      
+      /* Styles pour l'animation de chargement */
+        #loading {
+            display: none; /* Cacher par défaut */
+            font-size: 18px;
+            color: #DA291C; /* Couleur de chargement */
+            margin-top: 10px;
+        }
+        .dots {
+            display: inline-block;
+            position: relative;
+        }
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 2px;
+            border-radius: 50%;
+            background-color: #DA291C; /* Couleur des points */
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+        .dot:nth-child(2) {
+            animation-delay: 0.2s; /* Délai pour le deuxième point */
+        }
+        .dot:nth-child(3) {
+            animation-delay: 0.4s; /* Délai pour le troisième point */
+        }
+
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+      
+        #storeNumber {
+            width: 20%;
+        }
+      
+        #storeButton {
+            width: 15%;
+        }
+      
+        .storeInfo {
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+      
+        .detailsInfo {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 8px;
+        }
+      
+        #labelRep {
+            width: 13%;
+        }
+      
+        #inputRep {
+            width: 37%;
+        }
+      
+        #infoSpacer {
+            width: 23%;
+        }
+      
+        #labelDate {
+            width: 7%;
+        }
+      
+        #date {
+            width: 20%;
+        }
+      
+      /* APPAREIL */
+      
+      #phoneList {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+      
+      #phonePrice {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      
+      /* Style pour l'élément d'acceptation des conditions */
+        .checkbox-container {
+            display: flex;
+            height: 100%;
+            gap: 8px;
+            margin-top: 10px;
+        }
+      
+        #protectionCheckbox {
+            width: 5%;
+        }
+      
+        .protectionPrice {
+          display: flex;
+          flex-direction: column;
+            line-height: 100%;
+            align-items: center;
+          justify-content : center;
+          margin-top: 8px;
+        }
+
+        /* Style pour les boutons radio */
+        .radio-group {
+            margin-top: 25px;
+        }
+
+        .radio-options {
+            display: flex;
+            flex-direction: column;
+            margin-top: -10px;
+        }
+      
+          .radio-options-1 {
+            display: flex;
+            flex-direction: row;
+          }
+      
+            #financement {
+              width: 5%;
+            }
+      
+            #creditCompte {
+              width: 5%;
+            }
+      
+          .radio-options-2 {
+            display: flex;
+            flex-direction: row;
+          }
+      
+            #retourner {
+              width: 5%;
+            }
+      
+            #creditMagasin {
+              width: 5%;
+            }
+      
+    /* FORFAIT */  
+    
+      #choix4 {
+        width: 100%;
+        padding: 8px;
+        margin-top: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      
+    /* OPTIONS & RABAIS */
+      
+    .clickable-text {
+      color: Blue;
+      cursor: pointer;
+      margin-top: -10px;
+      margin-bottom: -5px;
+      background-color: #00C12F;
+      width: 160px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 5px;
+      padding-top: 3px;
+      font-size: 18px;
+      font-weight: normal;
+      border-radius: 5px;
+        }
+        .input-container {
+            display: flex;
+            margin-top: 10px;
+            align-items: center;
+        }
+        .input-group {
+            margin-right: 20px;
+            margin-top: 0px;
+        }
+        .message {
+            color: red;
+            margin-top: 5px;
+          mar
+        }
+        .total-container {
+            margin-top: 0px;
+        }
+        .remove-icon {
+            cursor: pointer;
+            margin-left: 10px;
+            color: red;
+        }  
+      
+      #description-option1 {
+              width: 500px;
+              height: 100%;
+              justify-content: center;
+              align-items: start;
+              padding: 5px;
+              font-size: 16px;
+              font-family: Arial;
+            }
+    
+            #montant-option1 {
+              width: 150px;
+              height: 100%;
+              justify-content: center;
+              align-items: start;
+              padding: 5px;
+              font-size: 16px;
+              font-family: Arial;
+            }
+    
+            #description-option2 {
+              width: 500px;
+              height: 100%;
+              justify-content: center;
+              align-items: start;
+              padding: 5px;
+              font-size: 16px;
+              font-family: Arial;
+            }
+    
+            #montant-option2 {
+              width: 150px;
+              height: 100%;
+              justify-content: center;
+              align-items: start;
+              padding: 5px;
+              font-size: 16px;
+              font-family: Arial;
+            }
+    
+            #description-option3 {
+              width: 500px;
+              height: 100%;
+              justify-content: center;
+              align-items: start;
+              padding: 5px;
+              font-size: 16px;
+              font-family: Arial;
+            }
+    
+            #montant-option3 {
+              width: 150px;
+              height: 100%;
+              justify-content: center;
+              align-items: start;
+              padding: 5px;
+              font-size: 16px;
+              font-family: Arial;
+            } 
+            
+             #description-rabais1 {
+              width: 500px;
+              height: 100%;
+              justify-content: center;
+              align-items: start;
+              padding: 5px;
+              font-size: 16px;
+              font-family: Arial;
+            }
+    
+            #montant-rabais1 {
+              width: 150px;
+              height: 100%;
+              justify-content: center;
+              align-items: start;
+              padding: 5px;
+              font-size: 16px;
+              font-family: Arial;
+            }
+    
+            #description-rabais2 {
+              width: 500px;
+              height: 100%;
+              justify-content: center;
+              align-items: start;
+              padding: 5px;
+              font-size: 16px;
+              font-family: Arial;
+            }
+    
+            #montant-rabais2 {
+              width: 150px;
+              height: 100%;
+              justify-content: center;
+              align-items: start;
+              padding: 5px;
+              font-size: 16px;
+              font-family: Arial;
+            }
+    
+            #description-rabais3 {
+              width: 500px;
+              height: 100%;
+              justify-content: center;
+              align-items: start;
+              padding: 5px;
+              font-size: 16px;
+              font-family: Arial;
+            }
+    
+            #montant-rabais3 {
+              width: 150px;
+              height: 100%;
+              justify-content: center;
+              align-items: start;
+              padding: 5px;
+              font-size: 16px;
+              font-family: Arial;
+            } 
+      
+    /* LOOK-UP */  
+      
+      .lookup {
+        width: 100%;
+        height: 800px;
+        background-color: lime;
+      }
+      
+    </style>
+</head>
+<body>
+  
+  <div class="container">
+
+    <form action="#" method="post">
+        <!-- Section 1 / SERVICE -->
+        <fieldset>
+            <legend>Service</legend>
+          
+            <label for="nombre">Numéro de magasin :</label>
+            <div class="inline-group">
+              <input type="text" id="storeNumber" placeholder="#">
+              <button type="button" class="storeButton" id="storeButton" onclick="fetchStoreData()">OK</button>
+            </div>
+
+            <div class="storeInfo" id="storeInfo">
+              <p id="storeName"></p>
+              <p id="storeAddress1"></p>
+              <p id="storeAddress2"></p>
+              <p id="storePhone"></p>
+            </div>
+          
+            <div id="loading"><span class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
+
+            <div class="detailsInfo" id="detailsInfo">
+              <label id="labelRep" for="inputRep">Conseiller :</label>
+              <input type="text" id="inputRep" name="texte" oninput="afficherLookup()">
+              <label id="infoSpacer" for="labelDate"></label>
+              <label id=labelDate for="inputDate">Date :</label>
+              <input type="date" id="date" name="date" value="" oninput="afficherLookup()">
+            </div>
+          
+        </fieldset>
+
+        <!-- Section 2 / APPAREIL-->
+        <fieldset>
+            <legend>Appareil</legend>
+            <div class="section-2">
+                <!-- Colonne gauche avec les éléments de formulaire -->
+                <div class="form-elements">
+                  
+                    <label for="choix">Choisissez une option :</label>
+                    <input list="phones" id="phoneList" name="phoneList" placeholder="Chercher un appareil..." oninput="afficherLookup()">
+                    <datalist id="phones">
+                        <!-- Les options seront insérées ici dynamiquement -->
+                    </datalist>
+
+                    <!-- Ligne de texte -->
+                    <div id="phonePrice" style="display: none;"></div>
+
+                    <!-- Deux courts champs de saisie de texte en ligne -->
+                    <div class="short-inputs">
+                        <div class="short-input">
+                            <label for="court1">Mensualité :</label>
+                            <input type="text" id="mensualite" placeholder="Entrez un montant" value="0,00 $" oninput="afficherLookup()">
+                        </div>
+                        <div class="short-input">
+                            <label for="court2">Acompte :</label>
+                            <input type="text" id="acompte" placeholder="Entrez un montant" value="0,00 $" oninput="afficherLookup()">
+                        </div>
+                    </div>
+
+                    <!-- Case à cocher -->
+                    <div class="checkbox-container">
+                      <input type="checkbox" id="protectionCheckbox" oninput="afficherLookup()">
+                      <label for="protectionCheckbox">Protection</label>
+                      <div id="protectionPrice" class="protectionPrice" style="display: none;">Protection : </div>
+                    </div>
+
+                    <!-- Boutons radio pour options -->
+                    <div class="radio-group">
+                      <p>Type de financement :</p>
+                      <div class="radio-options">
+                        <div class="radio-options-1">
+                          <input type="radio" id="financement" name="optionAchat" value="financement"  oninput="afficherLookup()"checked>
+                          <label for="radio">Financement</label>
+                        </div>
+                        <div class="radio-options-2">
+                          <input type="radio" id="retourner" name="optionAchat" value="retourner" oninput="afficherLookup()">
+                          <label for="radio">Payez moins et retournez</label>
+                        </div>
+                      </div>
+                    </div>
+                  
+                </div>
+
+                <!-- Colonne droite avec l'image -->
+                <div class="image-container">
+                    <img id="phoneImage" src="" alt="Image de l'appareil" style="display: none;">
+                </div>
+            </div>
+        </fieldset>
+      
+        <!-- Section 3 / FORFAIT -->
+        <fieldset>
+            <legend>Forfait</legend>
+
+            <!-- Menu déroulant de type "datalist" -->
+            <label for="choix4">Type de forfait (si applicable) : </label>
+            <input list="options4" id="choix4" name="choix4"  oninput="afficherLookup()"required>
+            <datalist id="options4">
+                <option value="Option A">
+                <option value="Option B">
+                <option value="Option C">
+            </datalist>
+
+            <!-- Deux courts champs de saisie en ligne -->
+            <div class="short-inputs">
+                <div class="short-input">
+                    <label for="texte4">Mensualité :</label>
+                    <input type="text" id="mensualiteForfait" name="mensualiteForfait" placeholder="0,00$" oninput="afficherLookup()"required>
+                </div>
+                <div class="short-input">
+                    <label for="nombre4">Données (Go) :</label>
+                    <input type="number" id="donnees" name="donnees" min="0" step="1" oninput="afficherLookup()" required>
+                </div>
+            </div>
+        </fieldset>
+      
+        <!-- Section 4 / OPTIONS -->
+        <fieldset>
+            <legend>Options</legend>
+
+            <div class="optionContainer">
+             <button type="button" id="add-option" >Ajouter</button>
+             <div id="options-container"></div>
+             <p class="message" id="max-message-option" style="display: none;"></p>
+            </div>
+          
+        </fieldset>
+
+        <!-- Section 5 / RABAIS -->
+        <fieldset>
+            <legend>Rabais</legend>
+
+            <div class="rabaisContainer">
+              <button type="button" id="add-rabais" >Ajouter</button>
+              <div id="rabais-container"></div>
+              <p class="message" id="max-message-rabais" style="display: none;"></p>
+            </div>
+          
+        </fieldset>
+      
+        <!-- Section 6 / ÉCHANGE -->
+        <fieldset>
+            <legend>Échange</legend>
+
+            <!-- Bouton Afficher/Fermer -->
+            <button type="button" id="echangerAppareil" onclick="toggleSection3()">Afficher</button>
+
+            <!-- Éléments à afficher/cacher -->
+            <div class="section-3-elements" id="section3Elements">
+                <label for="texte3-1">Appareil :</label>
+                <input type="text" id="appareil" name="appareil" oninput="afficherLookup()"><br><br>
+
+                <label for="texte3-2">Valeur de l'échange :</label>
+                <input type="text" id="valeurEchange" name="valeurEchange" oninput="afficherLookup()"><br><br>
+
+                <!-- Boutons radio pour options -->
+                <div class="radio-group">
+                  <p>Type de crédit :</p>
+                  <div class="radio-options">
+                    <div class="radio-options-1">
+                      <input type="radio" id="creditCompte" name="creditType" value="compte"  oninput="afficherLookup()"checked>
+                      <label for="radio">Crédit porté au compte</label>
+                    </div>
+                    <div class="radio-options-2">
+                      <input type="radio" id="creditMagasin" name="creditType" value="magasin" oninput="afficherLookup()">
+                      <label for="radio">Crédit en magasin</label>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Look-up -->
+        <div class="lookup" style="display: none;">
+          
+          <h3>Service</h3>
+          <div id="lookup-rep"></div>
+          <div id="lookup-date"></div>
+          
+          <h3>Appareil</h3>
+          <div id="lookup-model"></div>
+          <div id="lookup-mensualiteAppareil"></div>
+          <div id="lookup-acompteAppareil"></div>
+          <div id="etatProtection"></div>
+          <div id="lookup-typeFinancement"></div>
+          
+          <h3>Forfait</h3>
+          <div id="lookup-typeForfait"></div>
+          <div id="lookup-mensualiteForfait"></div>
+          <div id="lookup-donnees"></div>
+          
+          <h3>Options</h3>
+          <div id="lookup-optionsDescription1"></div>
+          <div id="lookup-optionsMontant1"></div>
+          <div id="lookup-optionsDescription2"></div>
+          <div id="lookup-optionsMontant2"></div>
+          <div id="lookup-optionsDescription3"></div>
+          <div id="lookup-optionsMontant3"></div>
+          
+          <h3>Rabais</h3>
+          <div id="lookup-rabaisDescription1"></div>
+          <div id="lookup-rabaisMontant1"></div>
+          <div id="lookup-rabaisDescription2"></div>
+          <div id="lookup-rabaisMontant2"></div>
+          <div id="lookup-rabaisDescription3"></div>
+          <div id="lookup-rabaisMontant3"></div>
+          
+          <h3>Échange</h3>
+          <div id="etatValeur"></div>
+          <div id="lookup-echangeAppareil"></div>
+          <div id="lookup-echangeValeur"></div>
+          <div id="lookup-echangeType"></div>
+          
+          <h3>Totaux</h3>
+          <div id="totalAmount">Total pour l'appareil : 0,00 $</div>
+          <label for="total">Total pour le forfait :</label>
+          <output id="total">0,00 $</output>
+          <div class="total-container">
+          <strong>Total des options:</strong>
+          <span id="total-amount-option">0,00$</span>
+          </div>
+          <div class="total-container">
+          <strong>Total des rabais:</strong>
+          <span id="total-amount-rabais">0,00$</span>
+          </div>
+
+        </div>
+      
+    </form>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="box1">
+        <!-- Contenu de l'encadré 1 -->
+        <div class="box-title">Résumé mensuel</div>
+        
+          <div class="box-section1">
+            <p>Appareil : <span id="resumeAppareil">0,00 $</span></p>
+            <p>Forfait : <span id="resumeForfait">0,00 $</span></p>
+            <p>Options : <span id="resumeOptions">0,00 $</span></p>
+            <p>Rabais : <span id="resumeRabais">0,00 $</span></p>
+          </div>
+            
+          <div class="box-section2">
+            <p>Sous-total : <span id="resumeSubtotal">0,00 $</span></p>
+            <p>Taxes (14,975%) : <span id="resumeTaxes">0,00 $</span></p>
+          </div>
+            
+          <div class="box-sectionTotal">
+            <p>Total mensuel : <span id="resumeTotalMensuel">0,00 $</span></p>
+          </div>
+        
+      </div>
+      <div class="box2">
+        <!-- Contenu de l'encadré 2 -->
+        <div class="box-title">À payer aujourd'hui</div>
+        
+          <div class="box-section1">
+            <p>Montant de l'acompte : <span id="montantAcompte">0,00$</span></p>
+            <p>Taxes : <span id="montantTaxes">0,00$</span></p>
+            <p>Total de l'acompte : <span id="totalAcompte">0,00$</span></p>
+          </div>
+            
+          <div class="box-sectionTotal">
+            <p>À payer aujourd'hui : <span id="aPayerAujourdHui">0,00$</span></p>
+          </div>
+        
+      </div>
+
+      <!-- Boutons d'action pour impression et téléchargement -->
+      <div class="action-buttons">
+        <button type="button" onclick="window.print()">
+          <span class="icon">🖨️</span> Imprimer
+        </button>
+        <button type="button" onclick="downloadPDF()">
+          <span class="icon">📥</span> Télécharger (PDF)
+        </button>
+      </div>
+</div>
+    
+  </div>
+  
+    <script>
+    
+    // BASE JS  
+      
+      function toggleSection3() {
+        const section3Elements = document.getElementById('section3Elements');
+        const toggleButton = document.getElementById('echangerAppareil');
+
+        if (section3Elements.style.display === 'none' || section3Elements.style.display === '') {
+          // Afficher les éléments et changer le bouton en "Fermer"
+          section3Elements.style.display = 'block';
+          toggleButton.textContent = 'Masquer';
+        } else {
+          // Cacher les éléments, changer le bouton en "Afficher" et réinitialiser les champs
+          section3Elements.style.display = 'none';
+          toggleButton.textContent = 'Afficher';
+
+          // Réinitialiser les valeurs
+          document.getElementById('texte3-1').value = '';
+          document.getElementById('texte3-2').value = '';
+
+          // Réinitialiser les boutons radio
+          const radios = document.getElementsByName('option3');
+          radios.forEach(radio => radio.checked = false);
+        }
+      }
+      
+        let rowCount5 = 0; // Compteur pour les lignes de la section 4
+        let rowCount6 = 0; // Compteur pour les lignes de la section 5
+
+      function addRow5() {
+        const maxRows = 3;
+        const dynamicRowsContainer5 = document.getElementById("dynamicRowsContainer5");
+        const warningMessage5 = document.getElementById("warningMessage5");
+
+        if (rowCount5 < maxRows) {
+          rowCount5++;
+
+          const row = document.createElement("div");
+          row.className = "dynamic-row";
+          row.id = `row5-${rowCount5}`;
+
+          const textInput1 = document.createElement("input");
+          textInput1.type = "text";
+          textInput1.placeholder = "Champ texte 1";
+          row.appendChild(textInput1);
+
+          const textInput2 = document.createElement("input");
+          textInput2.type = "text";
+          textInput2.placeholder = "Champ texte 2";
+          row.appendChild(textInput2);
+
+          const removeBtn = document.createElement("span");
+          removeBtn.textContent = "X";
+          removeBtn.className = "remove-btn";
+          removeBtn.onclick = () => removeRow5(row.id);
+          row.appendChild(removeBtn);
+
+          dynamicRowsContainer5.appendChild(row);
+          warningMessage5.style.display = "none";
+        } else {
+          warningMessage5.style.display = "block";
+        }
+      }
+
+      function removeRow5(rowId) {
+        const row = document.getElementById(rowId);
+        if (row) {
+          row.remove();
+          rowCount5--;
+
+          const warningMessage5 = document.getElementById("warningMessage5");
+          warningMessage5.style.display = "none";
+        }
+      }
+
+      function addRow6() {
+        const maxRows = 3;
+        const dynamicRowsContainer6 = document.getElementById("dynamicRowsContainer6");
+        const warningMessage6 = document.getElementById("warningMessage6");
+
+        if (rowCount6 < maxRows) {
+          rowCount6++;
+
+          const row = document.createElement("div");
+          row.className = "dynamic-row";
+          row.id = `row6-${rowCount6}`;
+
+          const textInput1 = document.createElement("input");
+          textInput1.type = "text";
+          textInput1.placeholder = "Champ texte 1";
+          row.appendChild(textInput1);
+
+          const textInput2 = document.createElement("input");
+          textInput2.type = "text";
+          textInput2.placeholder = "Champ texte 2";
+          row.appendChild(textInput2);
+
+          const removeBtn = document.createElement("span");
+          removeBtn.textContent = "X";
+          removeBtn.className = "remove-btn";
+          removeBtn.onclick = () => removeRow6(row.id);
+          row.appendChild(removeBtn);
+
+          dynamicRowsContainer6.appendChild(row);
+          warningMessage6.style.display = "none";
+        } else {
+          warningMessage6.style.display = "block";
+        }
+      }
+
+      function removeRow6(rowId) {
+        const row = document.getElementById(rowId);
+        if (row) {
+          row.remove();
+          rowCount6--;
+
+          const warningMessage6 = document.getElementById("warningMessage6");
+          warningMessage6.style.display = "none";
+        }
+      }
+    
+    // SERVICE
+      
+      // Fonction pour obtenir la date du jour au format 'YYYY-MM-DD'
+      function getTodayDate() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Ajouter un zéro si nécessaire
+        const day = String(today.getDate()).padStart(2, '0'); // Ajouter un zéro si nécessaire
+        return `${year}-${month}-${day}`;
+      }
+
+      // Définir la valeur du champ de date par défaut à aujourd'hui
+      document.getElementById('date').value = getTodayDate();
+
+      async function fetchStoreData() {
+        const storeNumber = document.getElementById('storeNumber').value;
+        const loadingDiv = document.getElementById('loading');
+        const storeInfoDiv = document.getElementById('storeInfo');
+
+        // Afficher l'animation de chargement
+        loadingDiv.style.display = 'block';
+
+        const response = await fetch('https://script.google.com/macros/s/AKfycbyDF8W3u9bstxw-2EppMsxpQJd6YVijgYG4Gh3eGYR4d6-gH37ovHZVRG9MYmqOKyq9/exec'); // Remplacez par l'URL de votre JSON
+        const data = await response.json();
+
+        // Vérifiez si le storeNumber est une chaîne de caractères
+        const store = data.find(item => item.number.toString() === storeNumber);
+
+        // Effacer les informations précédentes
+        document.getElementById('storeName').innerText = '';
+        document.getElementById('storeAddress1').innerText = '';
+        document.getElementById('storeAddress2').innerText = '';
+        document.getElementById('storePhone').innerText = '';
+
+        if (store) {
+          document.getElementById('storeName').innerText = store.name;
+          document.getElementById('storeAddress1').innerText = store.address1;
+          document.getElementById('storeAddress2').innerText = store.address2;
+          document.getElementById('storePhone').innerText = formatPhoneNumber(store.phone);
+        } else {
+          storeInfoDiv.innerHTML = '<p>Aucune boutique trouvée avec ce numéro.</p>';
+        }
+
+        // Masquer l'animation de chargement
+        loadingDiv.style.display = 'none';
+        }
+
+        // Fonction pour formater le numéro de téléphone
+        function formatPhoneNumber(phone) {
+          // Convertir le numéro en chaîne de caractères pour être sûr
+          const phoneStr = phone.toString();
+
+          // Vérifier la longueur du numéro de téléphone
+          if (phoneStr.length === 10) {
+            return `(${phoneStr.slice(0, 3)}) ${phoneStr.slice(3, 6)}-${phoneStr.slice(6)}`;
+          } else if (phoneStr.length === 11) {
+            return `${phoneStr[0]} (${phoneStr.slice(1, 4)}) ${phoneStr.slice(4, 7)}-${phoneStr.slice(7)}`;
+          } else {
+            return phoneStr; // Retourne le numéro tel quel si la longueur n'est ni 10 ni 11
+          }
+        }
+
+        // Ajouter un gestionnaire d'événements pour la touche 'Enter'
+        document.getElementById('storeNumber').addEventListener('keydown', function(event) {
+          if (event.key === 'Enter') {
+            fetchStoreData(); // Appeler la fonction lors de l'appui sur 'Enter'
+          }
+        });
+      
+    // APPAREIL 
+    
+    // URL du fichier JSON
+    const jsonUrl = 'https://script.google.com/macros/s/AKfycbyJ5tNcFzeDHlhdp_RFX4j25y-qEBtnFcA0pFw0KtDmJ3CxyKvuJv3tKdbr5Zlmuj8X/exec';
+    let phonesData = [];
+    let selectedPrice = 0;
+    let protectionPriceAmount = 0;
+
+    // Fonction pour charger les données du fichier JSON
+    async function loadPhones() {
+      try {
+        const response = await fetch(jsonUrl);
+        const data = await response.json();
+        phonesData = data;  // Stocker les données pour les utiliser plus tard
+
+        const datalist = document.getElementById('phones');
+
+        // Parcourir les éléments JSON et ajouter les noms dans le datalist
+        data.forEach(phone => {
+          const option = document.createElement('option');
+          option.value = phone.Nom;  // Utiliser la colonne "Nom"
+          datalist.appendChild(option);
+        });
+      } catch (error) {
+        console.error("Erreur lors du chargement des données JSON :", error);
+      }
+    }
+
+    // Fonction pour afficher l'image et le plein prix correspondant à la sélection
+    function showPhoneDetails() {
+      const selectedPhone = document.getElementById('phoneList').value;
+      const phoneImage = document.getElementById('phoneImage');
+      const phonePrice = document.getElementById('phonePrice');
+      const protectionPrice = document.getElementById('protectionPrice');
+      const protectionCheckbox = document.getElementById('protectionCheckbox');
+      const protectionContainer = document.getElementById('protectionContainer');
+
+      // Chercher l'appareil correspondant dans les données
+      const phone = phonesData.find(p => p.Nom === selectedPhone);
+
+      if (phone) {
+        // Afficher l'image si elle existe
+        if (phone.ImageURL) {
+          phoneImage.src = phone.ImageURL;  // Définir l'URL de l'image
+          phoneImage.style.display = 'block';  // Afficher l'image
+        } else {
+          phoneImage.style.display = 'none';  // Masquer l'image si aucune URL
+        }
+
+        // Afficher le plein prix s'il existe
+        if (phone['Plein prix']) {
+          selectedPrice = phone['Plein prix'];  // Stocker le plein prix pour la protection
+          const formattedPrice = new Intl.NumberFormat('fr-CA', { style: 'currency', currency: 'CAD' }).format(selectedPrice);
+          phonePrice.textContent = 'Plein prix : '+`${formattedPrice}`;  // Afficher le prix formaté
+          phonePrice.style.display = 'block';  // Afficher le conteneur du prix
+        } else {
+          phonePrice.style.display = 'none';  // Masquer si aucun prix
+        }
+
+        // Afficher la case de protection
+        protectionContainer.style.display = 'block';  // Afficher la case à cocher
+        // Réinitialiser la protection
+        protectionCheckbox.checked = false;
+        protectionPrice.style.display = 'none';
+      } else {
+        phoneImage.style.display = 'none';  // Masquer l'image si aucune correspondance
+        phonePrice.style.display = 'none';  // Masquer le prix si aucune correspondance
+        protectionContainer.style.display = 'none';  // Masquer la case de protection
+        protectionPrice.style.display = 'none';
+      }
+    }
+
+        // Fonction pour calculer et afficher le prix de la protection
+        function showProtectionPrice() {
+          const protectionPrice = document.getElementById('protectionPrice');
+          if (this.checked) {  // Si la case est cochée
+            if (selectedPrice < 600) {
+              protectionPriceAmount = 7.99;
+            } else if (selectedPrice >= 600 && selectedPrice <= 799.99) {
+              protectionPriceAmount = 9.99;
+            } else if (selectedPrice >= 800 && selectedPrice <= 1499.99) {
+              protectionPriceAmount = 18.99;
+            } else if (selectedPrice >= 1500 && selectedPrice <= 3000) {
+              protectionPriceAmount = 21.99;
+            }
+
+            const formattedProtection = new Intl.NumberFormat('fr-CA', { style: 'currency', currency: 'CAD' }).format(protectionPriceAmount);
+            protectionPrice.textContent = `(${formattedProtection})`;
+            protectionPrice.style.display = 'block';  // Afficher le prix de la protection
+
+            // Mettre à jour le total
+            updateTotal();
+          } else {
+            protectionPrice.style.display = 'none';  // Masquer le prix si décoché
+            protectionPriceAmount = 0;  // Réinitialiser le montant de la protection
+            updateTotal();  // Mettre à jour le total sans protection
+          }
+        }
+
+        // Fonction pour calculer et afficher le total pour l'appareil
+        function updateTotal() {
+          const mensualiteValue = document.getElementById('mensualite').value.replace(/\s+/g, '').replace(',', '.');
+          const numericMensualite = parseFloat(mensualiteValue);
+          let total = numericMensualite || 0;  // Si la valeur n'est pas un nombre, utiliser 0
+
+          total += protectionPriceAmount;  // Ajouter le montant de la protection
+
+          const formattedTotal = new Intl.NumberFormat('fr-CA', { style: 'currency', currency: 'CAD' }).format(total);
+          const totalAmountDiv = document.getElementById('totalAmount');
+          totalAmountDiv.textContent = `Total pour l'appareil : ${formattedTotal}`;
+        }
+
+        // Fonction pour reformater les valeurs des champs de saisie en format monétaire
+        function formatAsCurrency(event) {
+          const value = event.target.value.replace(/\s+/g, '').replace(',', '.');  // Nettoyer l'entrée
+          const numericValue = parseFloat(value);  // Convertir en nombre
+
+          if (!isNaN(numericValue)) {
+            const formattedValue = new Intl.NumberFormat('fr-CA', { style: 'currency', currency: 'CAD' }).format(numericValue);
+            event.target.value = formattedValue.replace(' $', ' $');  // Remplacer le format d'affichage par défaut
+          } else {
+            event.target.value = '';  // Réinitialiser si non numérique
+          }
+          updateTotal();  // Mettre à jour le total après la reformulation
+        }
+
+        // Événements
+        document.getElementById('phoneList').addEventListener('input', showPhoneDetails);
+        document.getElementById('protectionCheckbox').addEventListener('change', showProtectionPrice);
+        document.getElementById('mensualite').addEventListener('blur', formatAsCurrency);
+        document.getElementById('acompte').addEventListener('blur', formatAsCurrency);
+
+        // Événements pour gérer le focus dans les champs de saisie
+        document.getElementById('mensualite').addEventListener('focus', function() {
+          if (this.value === '0,00 $') {
+            this.value = '';  // Effacer le champ si c'est la valeur par défaut
+          }
+        });
+
+        document.getElementById('acompte').addEventListener('focus', function() {
+          if (this.value === '0,00 $') {
+            this.value = '';  // Effacer le champ si c'est la valeur par défaut
+          }
+        });
+
+        // Charger les téléphones lors de l'initialisation de la page
+        loadPhones();  
+      
+    // FORFAIT 
+
+      // Fonction pour formater le montant en dollars
+      document.getElementById('mensualiteForfait').addEventListener('blur', function() {
+        let input = this.value;
+        // Remplacer la virgule par un point
+        input = input.replace(',', '.');
+        // Formater le montant
+        let montant = parseFloat(input);
+        if (!isNaN(montant)) {
+          this.value = montant.toLocaleString('fr-CA', { style: 'currency', currency: 'CAD' });
+          // Mettre à jour le total pour le forfait
+          document.getElementById('total').textContent = montant.toLocaleString('fr-CA', { style: 'currency', currency: 'CAD' });
+        } else {
+          this.value = '';
+          document.getElementById('total').textContent = '0,00 $';
+        }
+      });  
+      
+    // OPTIONS 
+    
+    let countOptions = 0;
+    const maxOptions = 3;
+
+    document.getElementById('add-option').addEventListener('click', function() {
+        if (countOptions < maxOptions) {
+            countOptions++;
+            addOptionRow(countOptions);
+            document.getElementById('max-message-option').style.display = 'none';
+        } else {
+            document.getElementById('max-message-option').innerText = "Maximum atteint.";
+            document.getElementById('max-message-option').style.display = 'block';
+        }
+    });
+
+    function addOptionRow(number) {
+      const container = document.createElement('div');
+      container.className = 'input-container';
+      container.innerHTML = `
+              <div class="input-group">
+                  <input type="text" id="description-option${number}" placeholder="Description de l'option"  oninput="afficherLookup()">
+    </div>
+              <div class="input-group">
+                  <input type="text" id="montant-option${number}" value="0,00$" placeholder="$,$$" oninput="afficherLookup()">
+                  <span class="remove-icon" id="remove-option${number}" title="Supprimer cette option">&#10006;</span>
+    </div>
+          `;
+      document.getElementById('options-container').appendChild(container);
+
+      const montantInput = container.querySelector(`#montant-option${number}`);
+      montantInput.addEventListener('blur', function() {
+        formatMontant(this);
+        updateTotalOptions();
+        updateResume();
+      });
+      montantInput.addEventListener('focus', function() {
+        if (this.value === "0,00$") {
+          this.value = '';
+        }
+      });
+
+      container.querySelector(`#remove-option${number}`).addEventListener('click', function() {
+        container.remove();
+        countOptions--;
+        updateTotalOptions();
+        updateResume();
+      });
+    }
+
+    function updateTotalOptions() {
+      let total = 0;
+      const montants = document.querySelectorAll('input[id^="montant-option"]');
+      montants.forEach(input => {
+        let value = input.value.replace(/[^\d.,]/g, '');
+        if (value) {
+          let montant = parseFloat(value.replace(',', '.'));
+          if (!isNaN(montant)) {
+            total += montant;
+          }
+        }
+      });
+      document.getElementById('total-amount-option').innerText = total.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
+    }  
+      
+    // RABAIS
+    
+    let countRabais = 0;
+    const maxRabais = 3;
+
+    document.getElementById('add-rabais').addEventListener('click', function() {
+      if (countRabais < maxRabais) {
+        countRabais++;
+        addRabaisRow(countRabais);
+        document.getElementById('max-message-rabais').style.display = 'none';
+      } else {
+        document.getElementById('max-message-rabais').innerText = "Maximum atteint.";
+        document.getElementById('max-message-rabais').style.display = 'block';
+      }
+    });
+
+    function addRabaisRow(number) {
+      const container = document.createElement('div');
+      container.className = 'input-container';
+      container.innerHTML = `
+              <div class="input-group">
+                  <input type="text" id="description-rabais${number}" placeholder="Entrez une description" oninput="afficherLookup()">
+    </div>
+              <div class="input-group">
+                  <input type="text" id="montant-rabais${number}" value="0,00$" placeholder="Montant en dollars" oninput="afficherLookup()">
+                  <span class="remove-icon" id="remove-rabais${number}" title="Supprimer ce rabais">&#10006;</span>
+    </div>
+          `;
+      document.getElementById('rabais-container').appendChild(container);
+
+      const montantInput = container.querySelector(`#montant-rabais${number}`);
+      montantInput.addEventListener('blur', function() {
+        formatMontant(this);
+        updateTotalRabais();
+        updateResume();
+      });
+      montantInput.addEventListener('focus', function() {
+        if (this.value === "0,00$") {
+          this.value = '';
+        }
+      });
+
+      container.querySelector(`#remove-rabais${number}`).addEventListener('click', function() {
+        container.remove();
+        countRabais--;
+        updateTotalRabais();
+        updateResume();
+      });
+    }
+
+    function updateTotalRabais() {
+      let total = 0;
+      const montants = document.querySelectorAll('input[id^="montant-rabais"]');
+      montants.forEach(input => {
+        let value = input.value.replace(/[^\d.,]/g, '');
+        if (value) {
+          let montant = parseFloat(value.replace(',', '.'));
+          if (!isNaN(montant)) {
+            total += montant;
+          }
+        }
+      });
+      document.getElementById('total-amount-rabais').innerText = total.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
+    }
+
+    function formatMontant(input) {
+      let value = input.value.replace(/[^\d.]/g, '');
+      if (value) {
+        let montant = parseFloat(value);
+        if (!isNaN(montant)) {
+          input.value = montant.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
+        } else {
+          input.value = '';
+        }
+      } else {
+        input.value = '';
+      }
+    }
+    
+    // Appeler cette fonction chaque fois que le total de l'appareil est mis à jour
+    document.getElementById('phoneList').addEventListener('input', updateResume);
+    document.getElementById('protectionCheckbox').addEventListener('change', updateResume);
+    document.getElementById('mensualite').addEventListener('blur', updateResume);
+    document.getElementById('acompte').addEventListener('blur', updateResume);
+    document.getElementById('mensualiteForfait').addEventListener('blur', updateResume);
+    document.getElementById('mensualiteForfait').addEventListener('change', updateResume);
+    
+    // ECHANGE & A PAYER AUJOURDHUI
+    
+    const echangerAppareilLink = document.getElementById("echangerAppareil");
+    const elements = document.getElementById("elementsToShow");
+
+    echangerAppareilLink.addEventListener("click", function(event) {
+      event.preventDefault(); // Empêche le comportement par défaut du lien
+
+      // Afficher ou masquer les éléments
+      if (elements.style.display === "none" || elements.style.display === "") {
+        elements.style.display = "block"; 
+        echangerAppareilLink.textContent = 'Retirer l\'échange'; // Changer le texte
+        updateMontantAcompte(); // Mettre à jour le montant de l'acompte lors de l'affichage
+      } else {
+        // Remettre les valeurs par défaut et masquer les éléments
+        elements.style.display = "none";
+        echangerAppareilLink.textContent = 'Échanger un appareil'; // Remettre le texte initial
+        resetFields(); // Remettre les champs par défaut
+      }
+    });
+
+    function resetFields() {
+      document.getElementById("appareil").value = '';
+      document.getElementById("valeurEchange").value = '';
+      document.getElementById("creditCompte").checked = true; // Réinitialiser à l'option "Crédit porté au compte"
+      updateMontantAcompte(); // Réinitialiser "À payer aujourd'hui"
+    }
+
+    function updateMontantAcompte() {
+      const acompteInput = document.getElementById("acompte").value;
+      const acompteValue = parseFloat(acompteInput.replace(' $', '').replace(',', '.')) || 0;
+      const taxes = acompteValue * 0.14975; // 14,975%
+
+      // Mettre à jour le montant de l'acompte et les taxes
+      document.getElementById("montantAcompte").textContent = acompteValue.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
+      document.getElementById("montantTaxes").textContent = taxes.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
+      document.getElementById("totalAcompte").textContent = (acompteValue + taxes).toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
+
+      // Mettre à jour le total à payer aujourd'hui
+      updateAPayerAujourdHui(acompteValue + taxes);
+    }
+
+    document.getElementById("valeurEchange").addEventListener("blur", function() {
+      const input = this.value;
+
+      // Remplacer les virgules et les points pour normaliser le nombre
+      let normalizedValue = input.replace(/,/g, '.').replace(/^\s+|\s+$/g, '');
+
+      // Convertir en nombre
+      const numberValue = parseFloat(normalizedValue);
+
+      if (!isNaN(numberValue)) {
+        // Formater le montant au format monétaire canadien-français
+        this.value = numberValue.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
+
+        // Vérifier si le crédit magasin est sélectionné
+        if (document.getElementById("creditMagasin").checked) {
+          const acompteValue = parseFloat(document.getElementById("montantAcompte").textContent.replace(' $', '').replace(',', '.'));
+          const nouveauTotal = acompteValue + (acompteValue * 0.14975) - numberValue; // Mise à jour du montant
+          updateAPayerAujourdHui(nouveauTotal);
+        }
+      } else {
+        // Si la valeur n'est pas un nombre, vider le champ
+        this.value = '';
+      }
+    });
+
+    // Écouteurs d'événements pour les boutons radio
+    const creditMagasin = document.getElementById("creditMagasin");
+    const montantAcompte = document.getElementById("montantAcompte");
+    const montantTaxes = document.getElementById("montantTaxes");
+    const totalAcompte = document.getElementById("totalAcompte");
+    const aPayerAujourdHui = document.getElementById("aPayerAujourdHui");
+    const taxeRate = 0.14975; // 14,975%
+
+    creditMagasin.addEventListener("change", function() {
+      if (this.checked) {
+        const acompteValue = parseFloat(montantAcompte.textContent.replace(' $', '').replace(',', '.')); // Récupérer le montant de l'acompte
+        const valeurEchangeInput = document.getElementById("valeurEchange").value;
+        const valeurEchange = parseFloat(valeurEchangeInput.replace(' $', '').replace(',', '.')) || 0; // Récupérer la valeur d'échange
+
+        // Mettre à jour le montant à payer aujourd'hui
+        const nouveauTotal = acompteValue + (acompteValue * taxeRate) - valeurEchange;
+        updateAPayerAujourdHui(nouveauTotal);
+      }
+    });
+
+    const creditCompte = document.getElementById("creditCompte");
+    creditCompte.addEventListener("change", function() {
+      if (this.checked) {
+        const acompteValue = parseFloat(montantAcompte.textContent.replace(' $', '').replace(',', '.')); // Récupérer le montant de l'acompte
+        // Laisser la valeur à payer aujourd'hui inchangée
+        updateAPayerAujourdHui(acompteValue + (acompteValue * taxeRate)); // Conserver le total initial
+      }
+    });
+
+    function updateAPayerAujourdHui(montant) {
+      aPayerAujourdHui.textContent = montant.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
+    }
+
+    // Écouter les modifications sur le champ acompte
+    document.getElementById("acompte").addEventListener("blur", updateMontantAcompte); // Mettre à jour l'acompte lors de la perte de focus
+    
+    // RÉSUMÉ 
+    
+      // Fonction pour mettre à jour la section Résumé avec le montant de l'appareil
+      setInterval(updateResume, 1000);
+      function updateResume() {
+        const totalAppareil = document.getElementById('totalAmount').textContent;
+        const appareilResume = document.getElementById('resumeAppareil');
+        const totalForfait = document.getElementById('total').textContent;
+        const forfaitResume = document.getElementById('resumeForfait');
+        const totalOptions = document.getElementById('total-amount-option').textContent;
+        const optionsResume = document.getElementById('resumeOptions');
+        const totalRabais = document.getElementById('total-amount-rabais').textContent;
+        const rabaisResume = document.getElementById('resumeRabais');
+        const subtotalResume = document.getElementById('resumeSubtotal'); // Élément pour le sous-total
+        const taxesResume = document.getElementById('resumeTaxes'); // Élément pour les taxes
+        const totalMensuelResume = document.getElementById('resumeTotalMensuel'); // Élément pour le total mensuel
+
+      // Extraire les montants
+      const montantAppareil = parseFloat(totalAppareil.match(/\d[\d\s]*,\d{2}/)?.[0].replace(/\s/g, '')?.replace(',', '.') || 0);
+      const montantForfait = parseFloat(totalForfait.match(/\d[\d\s]*,\d{2}/)?.[0].replace(/\s/g, '')?.replace(',', '.') || 0);
+      const montantOptions = parseFloat(totalOptions.match(/\d[\d\s]*,\d{2}/)?.[0].replace(/\s/g, '')?.replace(',', '.') || 0);
+      const montantRabais = parseFloat(totalRabais.match(/\d[\d\s]*,\d{2}/)?.[0].replace(/\s/g, '')?.replace(',', '.') || 0) * -1; // Transforme en négatif
+
+      // Mettre à jour la section Résumé
+      appareilResume.textContent = `${montantAppareil.toFixed(2).replace('.', ',')} $`;
+      forfaitResume.textContent = `${montantForfait.toFixed(2).replace('.', ',')} $`;
+      optionsResume.textContent = `${montantOptions.toFixed(2).replace('.', ',')} $`;
+      rabaisResume.textContent = `${montantRabais.toFixed(2).replace('.', ',')} $`;
+
+      // Calculer le sous-total
+      const sousTotal = montantAppareil + montantForfait + montantOptions + montantRabais;
+      subtotalResume.textContent = `${sousTotal.toFixed(2).replace('.', ',')} $`; // Mettre à jour la section sous-total
+
+      // Calculer les taxes
+      const taxes = sousTotal * 0.14975; // 14,975% du sous-total
+      taxesResume.textContent = `${taxes.toFixed(2).replace('.', ',')} $`; // Mettre à jour la section taxes
+
+      // Calculer le total mensuel
+      const totalMensuel = sousTotal + taxes;
+      totalMensuelResume.textContent = `${totalMensuel.toFixed(2).replace('.', ',')} $`; // Mettre à jour la section total mensuel
+  }
+
+      // Appeler cette fonction chaque fois que le total de l'appareil est mis à jour
+      document.getElementById('phoneList').addEventListener('input', updateResume);
+      document.getElementById('protectionCheckbox').addEventListener('change', updateResume);
+      document.getElementById('mensualite').addEventListener('blur', updateResume);
+      document.getElementById('acompte').addEventListener('blur', updateResume);
+
+      // Appeler cette fonction chaque fois que le total du forfait est mis à jour
+      document.getElementById('mensualiteForfait').addEventListener('blur', updateResume);
+
+    // LOOK-UP
+    setInterval(afficherLookup, 1000);
+    function afficherLookup() {
+      // Récupère la valeur du champ de saisie
+      var valeur1 = document.getElementById("inputRep").value;
+      var valeur2 = document.getElementById("date").value;
+      var valeur3 = document.getElementById("phoneList").value;
+      var valeur4 = document.getElementById("mensualite").value;
+      var valeur5 = document.getElementById("acompte").value;
+      var valeur6 = document.getElementById("mensualiteForfait").value;
+      var valeur7 = document.getElementById("donnees").value;
+      var valeur8 = document.getElementById("choix4").value;
+      // Affiche la valeur dans l'élément avec l'ID "affichage"
+      document.getElementById("lookup-rep").innerText = valeur1;
+      document.getElementById("lookup-date").innerText = valeur2;
+      document.getElementById("lookup-model").innerText = valeur3;
+      document.getElementById("lookup-mensualiteAppareil").innerText = valeur4;
+      document.getElementById("lookup-acompteAppareil").innerText = valeur5;
+      document.getElementById("lookup-mensualiteForfait").innerText = valeur6;
+      document.getElementById("lookup-donnees").innerText = valeur7;
+      document.getElementById("lookup-typeForfait").innerText = valeur8;
+    }
+    
+     setInterval(afficherLookup2, 1000);
+        function afficherLookup2() {
+        // Récupère la valeur du champ de saisie
+        var valeur9 = document.getElementById("description-option1").value;
+        var valeur10 = document.getElementById("montant-option1").value;
+        // Affiche la valeur dans l'élément avec l'ID "affichage"
+        document.getElementById("lookup-optionsDescription1").innerText = valeur9;
+        document.getElementById("lookup-optionsMontant1").innerText = valeur10;
+        }
+      
+      setInterval(afficherLookup3, 1000);
+        function afficherLookup3() {
+        // Récupère la valeur du champ de saisie
+        var valeur9 = document.getElementById("description-option2").value;
+        var valeur10 = document.getElementById("montant-option2").value;
+        // Affiche la valeur dans l'élément avec l'ID "affichage"
+        document.getElementById("lookup-optionsDescription2").innerText = valeur9;
+        document.getElementById("lookup-optionsMontant2").innerText = valeur10;
+        }
+      
+      setInterval(afficherLookup4, 1000);
+        function afficherLookup4() {
+        // Récupère la valeur du champ de saisie
+        var valeur9 = document.getElementById("description-option3").value;
+        var valeur10 = document.getElementById("montant-option3").value;
+        // Affiche la valeur dans l'élément avec l'ID "affichage"
+        document.getElementById("lookup-optionsDescription3").innerText = valeur9;
+        document.getElementById("lookup-optionsMontant3").innerText = valeur10;
+        }
+      
+      setInterval(afficherLookup5, 1000);
+        function afficherLookup5() {
+        // Récupère la valeur du champ de saisie
+        var valeur9 = document.getElementById("description-rabais1").value;
+        var valeur10 = document.getElementById("montant-rabais1").value;
+        // Affiche la valeur dans l'élément avec l'ID "affichage"
+        document.getElementById("lookup-rabaisDescription1").innerText = valeur9;
+        document.getElementById("lookup-rabaisMontant1").innerText = valeur10;
+        }
+      
+      setInterval(afficherLookup6, 1000);
+        function afficherLookup6() {
+        // Récupère la valeur du champ de saisie
+        var valeur9 = document.getElementById("description-rabais2").value;
+        var valeur10 = document.getElementById("montant-rabais2").value;
+        // Affiche la valeur dans l'élément avec l'ID "affichage"
+        document.getElementById("lookup-rabaisDescription2").innerText = valeur9;
+        document.getElementById("lookup-rabaisMontant2").innerText = valeur10;
+        }
+      
+      setInterval(afficherLookup7, 1000);
+        function afficherLookup7() {
+        // Récupère la valeur du champ de saisie
+        var valeur9 = document.getElementById("description-rabais3").value;
+        var valeur10 = document.getElementById("montant-rabais3").value;
+        // Affiche la valeur dans l'élément avec l'ID "affichage"
+        document.getElementById("lookup-rabaisDescription3").innerText = valeur9;
+        document.getElementById("lookup-rabaisMontant3").innerText = valeur10;
+        }
+      
+      setInterval(afficherLookup8, 1000);
+        function afficherLookup8() {
+        // Récupère la valeur du champ de saisie
+        var valeur9 = document.getElementById("appareil").value;
+        var valeur10 = document.getElementById("valeurEchange").value;
+        // Affiche la valeur dans l'élément avec l'ID "affichage"
+        document.getElementById("lookup-echangeAppareil").innerText = valeur9;
+        document.getElementById("lookup-echangeValeur").innerText = valeur10;
+        }
+      
+      setInterval(afficherLookup9, 1000);
+        function afficherLookup9() {
+        // Récupère la valeur du champ de saisie
+        var valeur9 = document.querySelector('input[name="optionAchat"]:checked').value;
+        // Affiche la valeur dans l'élément avec l'ID "affichage"
+        document.getElementById("lookup-typeFinancement").innerText = valeur9;
+        }
+      
+      setInterval(afficherLookup10, 1000);
+        function afficherLookup10() {
+        // Récupère la valeur du champ de saisie
+        var valeur9 = document.querySelector('input[name="creditType"]:checked').value;
+        // Affiche la valeur dans l'élément avec l'ID "affichage"
+        document.getElementById("lookup-echangeType").innerText = valeur9;
+        }
+      
+      setInterval(afficherLookup11, 1000);
+        function afficherLookup11() {
+        // Récupère la valeur du champ de saisie
+        var valeur9 = document.getElementById("valeurEchange").value;
+        // Affiche la valeur dans l'élément avec l'ID "affichage"
+       document.getElementById("etatValeur").innerText = valeur9 ? "OUI" : "NON";
+        }
+      
+      setInterval(afficherLookup12, 1000);
+        function afficherLookup12() {
+        // Récupère la valeur du champ de saisie
+        var valeur9 = document.getElementById("protectionCheckbox").checked;
+        // Affiche la valeur dans l'élément avec l'ID "affichage"
+        document.getElementById("etatProtection").innerText = valeur9 ? "AVEC" : "SANS";
+        }
+      
+      setInterval(afficherLookup13, 1000);
+        function afficherLookup13() {
+        // Vérifie si la case est cochée
+        var valeur9 = document.getElementById("protectionCheckbox").checked;
+        // Récupère la valeur du champ de prix
+        var prix = document.getElementById("protectionPrice").value;
+        // Affiche le prix si la case est cochée, sinon "0,00$"
+        document.getElementById("lookup-prixProtection").innerText = valeur9 ? prix : "0,00 $";
+        }
+      
+    </script>
+
+</body>
+</html>
