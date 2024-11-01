@@ -8,6 +8,133 @@
     <link rel="icon" type="image/x-icon" href="https://i.imgur.com/XMdjUYS.png">
     <style>
       
+      @media (max-width: 1599px) {
+         
+        @font-face {
+          font-family: 'Ted Next';
+          src: url('https://raw.githubusercontent.com/rogersrepaccess/devis/main/fonts/TedNext-Regular.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+        }  
+        
+        @keyframes moveArrow1 {
+            0% {
+                transform: translateX(0); /* Position de départ */
+            }
+            50% {
+                transform: translateX(-10px); /* Déplacement vers la gauche */
+            }
+            100% {
+                transform: translateX(0); /* Retour à la position de départ */
+            }
+        }
+        
+        @keyframes moveArrow2 {
+            0% {
+                transform: translateX(0); /* Position de départ */
+            }
+            50% {
+                transform: translateX(10px); /* Déplacement vers la gauche */
+            }
+            100% {
+                transform: translateX(0); /* Retour à la position de départ */
+            }
+        }
+        
+        @keyframes stretchText {
+            0% {
+                transform: scaleX(1); /* Échelle normale */
+            }
+            50% {
+                transform: scaleX(1.1); /* Élargir légèrement */
+            }
+            100% {
+                transform: scaleX(1); /* Retour à l'échelle normale */
+            }
+        }
+        
+                /* Définition de l'animation pour le conteneur */
+        @keyframes stretchContainer {
+            0% {
+                transform: scaleX(1); /* Échelle normale */
+            }
+            50% {
+                transform: scaleX(1.15); /* Élargir légèrement */
+            }
+            100% {
+                transform: scaleX(1); /* Retour à l'échelle normale */
+            }
+        }
+        
+        .container {
+          display: none;
+        }
+        
+        .enlarge {
+          position: absolute;
+          font-family: Ted Next;
+          background-color: #E6E6E6;
+          border-radius: 25px;
+          width: 700px;
+          height: 100px;
+          padding-left: 30px;
+          padding-right: 30px;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          margin: auto;
+          vertical-align: center;
+          top: 50%;
+          left: 50%;
+          margin-top: -25px;
+          margin-left: -350px;
+          animation: stretchContainer 1s infinite alternate; /* Application de l'animation d'étirement */
+        }
+        
+        .enlarge-text {
+          display: flex;
+          flex-direction: row;
+          font-family: Ted Next;
+          line-height: 100px;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          font-size: 24px;
+        }
+        
+        .arrowL {
+          display: flex;
+          flex-direction: column;
+          width: 50px;
+          margin-right: 30px;
+          font-size: 36px;
+          animation: moveArrow1 1s infinite alternate; /* Application de l'animation */
+        }
+        
+        .arrowT {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1; /* Permet au texte de prendre tout l'espace disponible */
+          text-align: center; /* Centre le texte */
+        }
+        
+        .arrowR {
+          display: flex;
+          flex-direction: column;
+          width: 50px;
+          margin-left: 30px;
+          font-size: 36px;
+          animation: moveArrow2 1s infinite alternate; /* Application de l'animation */
+        }
+        
+      }  
+      
+      @media (min-width: 1600px) {
+
+        .enlarge {
+          display: none;
+        }
+        
         @font-face {
           font-family: 'Ted Next';
           src: url('https://raw.githubusercontent.com/rogersrepaccess/devis/main/fonts/TedNext-Regular.woff') format('woff');
@@ -105,6 +232,25 @@
             width: 100%;
             height: auto;
             background-color: none;
+          }
+        
+          .infodiv {
+            margin-top: 25px;
+          }
+        
+          #info {
+            padding: 10px;
+            color: #383838;
+            background-color: #CECECE;
+            line-height: 100%;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 15px;
+          }
+      
+          #info:hover {
+            background-color: #AFAFAF;
+            transition-duration: 150ms;
           }
       
       
@@ -676,10 +822,28 @@
       line-height: 16px;
       margin-top: 20px;
     }  
+        
+    }
       
     </style>
 </head>
 <body>
+  
+  <div class="enlarge">
+    <div class="enlarge-text">
+      <div class="arrowL">
+        <i class="fa-solid fa-arrow-left"></i>  
+      </div>
+        
+      <div class="arrowT">
+        Élargissez l'écran pour utiliser le programme
+      </div>
+        
+      <div class="arrowR">  
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+    </div>
+  </div>
   
   <div class="container">
     
@@ -798,11 +962,14 @@
 
             <!-- Menu déroulant de type "datalist" -->
             <label for="choix4">Type de forfait (si applicable) : </label>
-            <input list="options4" id="choix4" name="choix4"  oninput="afficherLookup()"required>
+            <input list="options4" id="choix4" name="choix4"  oninput="afficherLookup()"required placeholder="Sélectionner ou écrire...">
             <datalist id="options4">
-                <option value="Option A">
-                <option value="Option B">
-                <option value="Option C">
+                <option value="Infini - Canada, États-Unis et plus">
+                <option value="Infini - Canada et États-Unis">
+                <option value="Infini - Partout au Canada">
+                <option value="Canada, États-Unis et plus">
+                <option value="Canada et États-Unis">
+                <option value="Partout au Canada">
             </datalist>
 
             <!-- Deux courts champs de saisie en ligne -->
@@ -990,6 +1157,10 @@
         <p>© Rogers Communications Canada</p>
         
         <p>© Timothée Vallée 2024</p>
+        
+        <div class="infodiv">
+          <a class="info-button" id="info" href="https://www.google.com"><i class="fa-solid fa-circle-info"></i>   INFO</a>
+        </div>
         
       </div>
       
