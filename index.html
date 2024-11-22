@@ -348,6 +348,43 @@
             font-size: 1.2em;
         }
       
+        .decharge-texte {
+            margin-top: -20px;
+          font-size: 8px;
+          line-height: 10px;
+        }
+      
+        .decharge-texte2 {
+          margin-top: -5px;
+          font-size: 8px;
+          line-height: 10px;
+        }
+      
+        .decharge-texte3 {
+          margin-top: -5px;
+          font-size: 12px;
+          line-height: 10px;
+        }
+      
+        .decharge-texte4 {
+          margin-top: -5px;
+          font-size: 12px;
+          line-height: 10px;
+        }
+      
+        #info {
+          background-color: #DA291C;
+          padding: 3px;
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          transition-duration: 200ms;
+        }
+      
+        #info:hover {
+          background-color: #9B1B12;
+        }
+      
       /* SERVICE */
       
       /* Styles pour l'animation de chargement */
@@ -1579,9 +1616,10 @@
             <label for="choix4">Type de forfait (si applicable) : </label>
             <input list="options4" id="choix4" name="choix4"  oninput="afficherLookup()"required>
             <datalist id="options4">
-                <option value="Option A">
-                <option value="Option B">
-                <option value="Option C">
+                <option value="Infini 5G - Partout au Canada">
+                <option value="Infini 5G - Canada + É.-U.">
+                <option value="Infini 5G - Canada, É.-U. et plus">
+                <option value="Données, appels et textos">
             </datalist>
 
             <!-- Deux courts champs de saisie en ligne -->
@@ -1762,13 +1800,15 @@
       
       <div class="decharge">
         
-        <p>Ce document est fourni à titre informatif seulement et ne constitue pas une offre, une promesse de prix, ni un engagement contractuel de la part de Rogers Communications Canada ou de ses représentants. Les prix, offres et détails des services demeurent sujets à modification sans préavis, et les montants indiqués peuvent varier en fonction des politiques officielles de Rogers Communications Canada.</p>
+        <p class="decharge-texte">Ce document est fourni à titre informatif seulement et ne constitue pas une offre, une promesse de prix, ni un engagement contractuel de la part de Rogers Communications Canada ou de ses représentants. Les prix, offres et détails des services demeurent sujets à modification sans préavis, et les montants indiqués peuvent varier en fonction des politiques officielles de Rogers Communications Canada.</p>
         
-        <p>Les logos et marques affichés dans ce document sont la propriété exclusive de Rogers Communications Canada</p>
+        <p class="decharge-texte2">Les logos et marques affichés dans ce document sont la propriété exclusive de Rogers Communications Canada</p>
         
-        <p>© Rogers Communications Canada</p>
+        <p class="decharge-texte3">© Rogers Communications Canada</p>
         
-        <p>© Timothée Vallée 2024</p>
+        <p class="decharge-texte4">© Timothée Vallée 2024</p>
+        
+        <a class="info-button" id="info" href="https://www.google.com"><i class="fa-solid fa-circle-info"></i> Info</a>
         
       </div>
       
