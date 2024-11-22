@@ -14,7 +14,15 @@
   
   <link rel="icon" type="image/x-icon" href="https://i.imgur.com/XMdjUYS.png">
   
+  <!--Container-->
+  
   <style>
+      
+    @media screen {
+    
+      .print {
+        display: none;
+      }
       
         @font-face {
           font-family: 'Ted Next';
@@ -27,6 +35,7 @@
         body {
             font-family: Ted Next;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -685,7 +694,767 @@
       margin-top: 20px;
     }  
       
-    </style>
+    }
+      
+    
+  
+  
+
+    
+    @media print {
+      
+    .container {
+        display: none;
+      }
+    
+    @page {
+        margin: 0;
+        size: letter;
+      }  
+      
+    .html {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      @font-face {
+        font-family: 'Ted Next';
+        src: url('https://raw.githubusercontent.com/rogersrepaccess/devis/main/fonts/TedNext-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+      }  
+      
+      .print {
+        display: flex;
+        flex-direction: row;
+        width: 8.5in;
+        height: 11in;
+        border: 0px solid black;
+        font-family: Ted Next;
+        margin: 0;
+        margin-left: -2px;
+      }
+      
+      fieldset {
+            border: 2px solid #DA291C;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #DA291C;
+            margin-bottom: 0px;
+            padding: 5px;
+            margin-left: 10px;
+        }
+      
+        .margin {
+          display: block;
+          width: 7.5in;
+          height: 10in;
+          border: 0px solid black;
+          margin: 0.5in 0.5in 0.5in 0.5in;
+        } 
+      
+          .p-header {
+            display: flex;
+            flex-direction: row;
+            width: 7.5in;
+            height: 0.5in;
+            border: 0px solid black;
+            border-bottom: 1px solid #DA291C;
+            padding-bottom: 10px;
+            margin-top: -0.15in;
+          } 
+      
+            .p-header-image {
+              display: flex;
+              flex-direction: column;
+              width: 4.5in;
+              height: 0.5in;
+              border: 0px solid black;
+            } 
+      
+              #p-header-image {
+                width: 4in;
+                margin-top: -35px;
+              } 
+      
+            .p-header-titre {
+              display: flex;
+              flex-direction: column;
+              width: 3in;
+              height: 0.5in;
+              border: 0px solid black;
+              text-align: right;
+              justify-content: center;
+              font-size: 28px;
+              font-weight: bold;
+              color: #DA291C;
+            } 
+      
+          .p-service {
+            display: flex;
+            flex-direction: row;
+            width: 7.5in;
+            height: 1in;
+            border: 0px solid black;
+            margin-top: 0.125in;
+          } 
+      
+            .p-service-boutique {
+              display: flex;
+              flex-direction: column;
+              width: 4.5in;
+              height: 0.85in;
+              border: 0px solid black;
+              margin-top: 0px;
+            } 
+      
+            .p-service-infos {
+              display: flex;
+              flex-direction: column;
+              width: 3in;
+              height: 0.85in;
+              margin-top: 15px;
+              border: 0px solid black;
+            }
+      
+              .p-service-infos-1 {
+                display: flex;
+                flex-direction: row;
+              }
+      
+                .p-service-infos-1-1 {
+                  margin-right: 5px;
+                }
+      
+              .p-service-infos-2 {
+                display: flex;
+                flex-direction: row;
+              }
+      
+                .p-service-infos-2-1 {
+                  margin-right: 5px;
+                }
+      
+          .p-appareil {
+            width: 7.25in;
+            height: 2in;
+            margin-top: -0.5in;
+            border: 2px solid #DA291C;
+            border-radius: 8px;
+            padding: 0px;
+            margin-top: -0.15in;
+            padding-left: 15px;
+          } 
+      
+            .p-appareil-titre {
+              width: 7.25in;
+              height: 0.25in;
+              border: 0px solid black;
+            } 
+      
+            .p-appareil-content {
+              display: flex;
+              flex-direction: row;
+              width: 7.3in;
+              height: 1.75in;
+              border: 0px solid black;
+            } 
+      
+              .p-appareil-infos {
+                display: flex;
+                flex-direction: column;
+                width: 4.5in;
+                height: 1.75in;
+                border: 0px solid black;
+                padding-left: 10px;
+              } 
+      
+                .p-appareil-infos-mensualite {
+                  display: flex;
+                  flex-direction: row;
+                  margin-top: 10px;
+                }
+      
+                  .p-appareil-infos-mensualite-1 {
+                    display: flex;
+                    flex-direction: column;
+                    margin-right: 5px;
+                  }
+      
+                  .p-appareil-infos-mensualite-2 {
+                    display: flex;
+                    flex-direction: column;
+                  }
+      
+                .p-appareil-infos-acompte {
+                  display: flex;
+                  flex-direction: row;
+                }
+      
+                  .p-appareil-infos-acompte-1 {
+                    display: flex;
+                    flex-direction: column;
+                    margin-right: 5px;
+                  }
+      
+                  .p-appareil-infos-acompte-2 {
+                    display: flex;
+                    flex-direction: column;
+                  }
+      
+                .p-appareil-infos-protection {
+                  display: flex;
+                  flex-direction: row;
+                  margin-top: 10px;
+                }
+      
+                  .p-appareil-infos-protection-1 {
+                    display: flex;
+                    flex-direction: column;
+                    margin-right: 5px;
+                  }
+      
+                  .p-appareil-infos-protection-etat {
+                    display: flex;
+                    flex-direction: column;
+                    margin-right: 5px;
+                  }
+      
+                  .p-appareil-infos-protection-etat {
+                    display: flex;
+                    flex-direction: column;
+                  }
+      
+                .p-appareil-infos-type {
+                  display: flex;
+                  flex-direction: column;
+                  margin-top: 10px;
+                }
+      
+                  .p-appareil-infos-type-financement {
+                    display: flex;
+                    flex-direction: row;
+                  }
+      
+                  .p-appareil-infos-type-type {
+                    display: flex;
+                    flex-direction: row;
+                  }
+
+              .p-appareil-image {
+                display: flex;
+                flex-direction: column;
+                width: 3in;
+                height: 1.75in;
+                border: 0px solid black;
+                justify-content: right;
+                align-items: end;
+                text-align: right;
+                padding-right: 20px;
+              }
+      
+                #import-appareil-image {
+                  width: 1.75in;
+                  margin-top: -13px;
+                }
+      
+          .p-forfait {
+            width: 7.15in;
+            height: 1in;
+            border: 2px solid #DA291C;
+            margin-top: -0.15in;
+          } 
+      
+            .p-forfait-titre {
+              width: 7in;
+              height: 0.25in;
+              border: 0px solid black;
+            } 
+      
+            .p-forfait-content-1 {
+              display: flex;
+              flex-direction: column;
+              width: 7in;
+              height: 0.75in;
+              border: 0px solid black;
+              padding-left: 15px;
+            }
+      
+              .p-forfait-type {
+                display: flex;
+                flex-direction: row;
+                width: 2.5in;
+                height: 0.75in;
+                border: 0px solid black;
+              }
+      
+            .p-forfait-content-2 {
+              display: flex;
+              flex-direction: row;
+              width: 7in;
+              height: 0.75in;
+              border: 0px solid black;
+              margin-top: 15px;
+            }
+      
+              .p-forfait-mensualite {
+                display: flex;
+                flex-direction: row;
+                width: 2.5in;
+                height: 0.75in;
+                border: 0px solid black;
+              }
+      
+                .p-forfait-mensualite-1 {
+                  display: flex;
+                  flex-direction: column;
+                  padding-right: 5px;
+                }
+      
+                .p-forfait-mensualite-2 {
+                  display: flex;
+                  flex-direction: column;
+                }
+      
+              .p-forfait-donnees {
+                display: flex;
+                flex-direction: row;
+                width: 2.5in;
+                height: 0.75in;
+                border: 0px solid black;
+              }
+      
+                .p-forfait-donnees-1 {
+                  display: flex;
+                  flex-direction: column;
+                  padding-right: 5px;
+                }
+      
+                .p-forfait-donnees-2 {
+                  display: flex;
+                  flex-direction: column;
+                  padding-right: 5px;
+                }
+      
+                .p-forfait-donnees-3 {
+                  display: flex;
+                  flex-direction: column;
+                }
+
+          .p-options-rabais {
+            display: flex;
+            flex-direction: row;
+            width: 7.5in;
+            height: 1in;
+            border: 0px solid black;
+            margin-top: -0.15in;
+          } 
+      
+            .p-options {
+              display: flex;
+              flex-direction: column;
+              width: 3.35in;
+              height: 1in;
+              border: 2px solid #DA291C;
+              margin-right: 0.0625in;
+            } 
+      
+              .p-options-titre {
+                width: 3in;
+                height: 0.25in;
+                border: 0px solid black;
+              } 
+      
+              .p-options-content {
+                display: flex;
+                flex-direction: row;
+                width: 3.35in;
+                height: 0.75in;
+                border: 0px solid black;
+                margin-top: -5px;
+              } 
+      
+                .p-options-descriptions {
+                  display: flex;
+                  flex-direction: column;
+                  width: 2.6875in;
+                  height: 0.75in;
+                  border: 0px solid black;
+                  padding-left: 15px;
+                } 
+      
+                  .p-options-description-1 {
+                    display: flex;
+                    flex-direction: row;
+                    border-bottom: 1px solid silver;
+                    height: 20px;
+                  }
+      
+                  .p-options-description-2 {
+                    display: flex;
+                    flex-direction: row;
+                    border-bottom: 1px solid silver;
+                    height: 20px;
+                  }
+      
+                  .p-options-description-3 {
+                    display: flex;
+                    flex-direction: row;
+                    height: 20px;
+                  }
+      
+                .p-options-mensualites {
+                  display: flex;
+                  flex-direction: column;
+                  width: 1in;
+                  height: 0.75in;
+                  border: 0px solid black;
+                  padding-right: 15px;
+                  text-align: right;
+                  align-items: end;
+                } 
+      
+                  .p-options-mensualite-1 {
+                    display: flex;
+                    flex-direction: row;
+                    border-bottom: 1px solid silver;
+                    height: 20px;
+                  }
+      
+                  .p-options-mensualite-2 {
+                    display: flex;
+                    flex-direction: row;
+                    border-bottom: 1px solid silver;
+                    height: 20px;
+                  }
+      
+                  .p-options-mensualite-3 {
+                    display: flex;
+                    flex-direction: row;
+                    height: 20px;
+                  }
+      
+            .p-rabais {
+              display: flex;
+              flex-direction: column;
+              width: 3.35in;
+              height: 1in;
+              border: 2px solid #DA291C;
+              margin-left: 0.0625in;
+            } 
+      
+              .p-rabais-titre {
+                width: 3in;
+                height: 0.25in;
+                border: 0px solid black;
+              } 
+      
+              .p-rabais-content {
+                display: flex;
+                flex-direction: row;
+                width: 3.35in;
+                height: 0.75in;
+                border: 0px solid black;
+                margin-top: -5px;
+              } 
+      
+                .p-rabais-descriptions {
+                  display: flex;
+                  flex-direction: column;
+                  width: 2.6875in;
+                  height: 0.75in;
+                  border: 0px solid black;
+                  padding-left: 15px;
+                } 
+      
+                  .p-rabais-description-1 {
+                    display: flex;
+                    flex-direction: row;
+                    border-bottom: 1px solid silver;
+                    height: 20px;
+                  }
+      
+                  .p-rabais-description-2 {
+                    display: flex;
+                    flex-direction: row;
+                    border-bottom: 1px solid silver;
+                    height: 20px;
+                  }
+      
+                  .p-rabais-description-3 {
+                    display: flex;
+                    flex-direction: row;
+                    height: 20px;
+                  }
+      
+                .p-rabais-mensualites {
+                  display: flex;
+                  flex-direction: column;
+                  width: 1in;
+                  height: 0.75in;
+                  border: 0px solid black;
+                  padding-right: 15px;
+                  text-align: right;
+                  align-items: end;
+                } 
+      
+                  .p-rabais-mensualite-1 {
+                    display: flex;
+                    flex-direction: row;
+                    border-bottom: 1px solid silver;
+                    height: 20px;
+                  }
+      
+                  .p-rabais-mensualite-2 {
+                    display: flex;
+                    flex-direction: row;
+                    border-bottom: 1px solid silver;
+                    height: 20px;
+                  }
+      
+                  .p-rabais-mensualite-3 {
+                    display: flex;
+                    flex-direction: row;
+                    height: 20px;
+                  }
+        
+          .p-echange {
+            width: 7.15in;
+            height: 1in;
+            border: 2px solid #DA291C;
+            margin-top: 0.4in;
+          } 
+      
+            .p-echange-titre {
+              width: 7in;
+              height: 0.25in;
+              border: 0px solid black;
+            } 
+      
+            .p-echange-content {
+              display: flex;
+              flex-direction: row;
+              width: 7in;
+              height: 0.75in;
+              border: 0px solid black;
+              padding-left: 15px;
+            } 
+      
+              .p-echange-infos {
+                display: flex;
+                flex-direction: column;
+                width: 3.75in;
+                height: 0.75in;
+                border: 0px solid black;
+              } 
+      
+                .p-echange-infos-1 {
+                  display: flex;
+                  flex-direction: row;
+                }
+      
+                  .p-echange-infos-1-1 {
+                    display: flex;
+                    flex-direction: column;
+                    margin-right: 5px;
+                  }
+      
+                  .p-echange-infos-1-2 {
+                    display: flex;
+                    flex-direction: column;
+                  }
+      
+                .p-echange-infos-2 {
+                  display: flex;
+                  flex-direction: row;
+                  margin-top: 10px;
+                }
+      
+                  .p-echange-infos-2-1 {
+                    display: flex;
+                    flex-direction: column;
+                    margin-right: 5px;
+                  }
+      
+                  .p-echange-infos-2-2 {
+                    display: flex;
+                    flex-direction: column;
+                  }
+      
+              .p-echange-type {
+                display: flex;
+                flex-direction: column;
+                width: 3.75in;
+                height: 0.75in;
+                border: 0px solid black;
+              }
+      
+                .p-echange-type-1 {
+                  display: flex;
+                  flex-direction: row;
+                }
+      
+                .p-echange-type-2 {
+                  display: flex;
+                  flex-direction: row;
+                  margin-top: 10px;
+                }
+      
+          .p-resume-aujourdhui {
+            display: flex;
+            flex-direction: row;
+            width: 7.5in;
+            height: 1.5in;
+            border: 0px solid black;
+            margin-top: -0.15in;
+          } 
+      
+            .p-resume {
+              display: flex;
+              flex-direction: column;
+              width: 4.5in;
+              height: 1.5in;
+              border: 2px solid #DA291C;
+              margin-right: 0.0625in;
+            } 
+      
+              .p-resume-titre {
+                width: 3.6875in;
+                height: 0.25in;
+                border: 0px solid black;
+                margin-right: 0.0625in;
+              } 
+      
+              .p-resume-content {
+                display: flex;
+                flex-direction: row;
+                width: 3.6875in;
+                border: 0px solid black;
+                margin-right: 0.0625in;
+                padding-left: 15px;
+              }
+      
+                .p-resume-col1 {
+                  display: flex;
+                  flex-direction: column;
+                  width: 1.75in;
+                  border: 0px solid black;
+                  margin-right: 0.0625in;
+                }
+      
+                  .p-resume-col1-1, .p-resume-col1-2, .p-resume-col1-3, .p-resume-col1-4 {
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 5px;
+                    height: 20px;
+                  }
+      
+                .p-resume-col2 {
+                  display: flex;
+                  flex-direction: column;
+                  width: 1.75in;
+                  border: 0px solid black;
+                  margin-left: 0.0625in;
+                }
+      
+                  .p-resume-col2-1 {
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 5px;
+                    margin-top: -17px;
+                  }
+      
+                  .p-resume-col2-2 {
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 5px;
+                    margin-top: -32px;
+                  }
+      
+                  .p-resume-col2-3 {
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 5px;
+                    margin-top: 0px;
+                  }
+      
+                  .p-resume-col2-4 {
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 0px;
+                    margin-top: -10px;
+                    font-weight: bold;
+                  }
+      
+            .p-aujourdhui {
+              display: flex;
+              flex-direction: column;
+              width: 2.75in;
+              height: 1.5in;
+              border: 2px solid #DA291C;
+              margin-left: 0.0625in;
+            } 
+      
+              .p-aujourdhui-titre {
+                width: 2.75in;
+                height: 0.25in;
+                border: 0px solid black;
+                margin-right: 0.0625in;
+              } 
+      
+              .p-aujourdhui-content {
+                display: flex;
+                flex-direction: column;
+                width: 2.55in;
+                height: 1.25in;
+                border: 0px solid black;
+                margin-right: 0.0625in;
+                padding-left: 15px;
+              }
+   
+                .p-aujourdhui-1 {
+                  display: flex;
+                  flex-direction: row;
+                  margin-top: -17px;
+                }
+      
+                .p-aujourdhui-2 {
+                  display: flex;
+                  flex-direction: row;
+                  margin-top: -27px;
+                }
+      
+                .p-aujourdhui-3 {
+                  display: flex;
+                  flex-direction: row;
+                  margin-top: -27px;
+                }
+      
+                .p-aujourdhui-4 {
+                  display: flex;
+                  flex-direction: row;
+                  margin-top: -27px;
+                  font-weight: bold;
+                }
+      
+          .p-footer {
+            width: 7.5in;
+            height: 0.5in;
+            border: 0px solid black;
+            margin-top: .5in;
+            font-size: 11px;
+            text-align: justify;
+          } 
+    
+      }
+    
+  </style>
   
 </head>
   
@@ -783,11 +1552,11 @@
                       <p>Type de financement :</p>
                       <div class="radio-options">
                         <div class="radio-options-1">
-                          <input type="radio" id="financement" name="optionAchat" value="financement"  oninput="afficherLookup()"checked>
+                          <input type="radio" id="financement" name="optionAchat" value="Financement"  oninput="afficherLookup()"checked>
                           <label for="radio">Financement</label>
                         </div>
                         <div class="radio-options-2">
-                          <input type="radio" id="retourner" name="optionAchat" value="retourner" oninput="afficherLookup()">
+                          <input type="radio" id="retourner" name="optionAchat" value="Payez moins et retournez" oninput="afficherLookup()">
                           <label for="radio">Payez moins et retournez</label>
                         </div>
                       </div>
@@ -872,11 +1641,11 @@
                   <p>Type de crédit :</p>
                   <div class="radio-options">
                     <div class="radio-options-1">
-                      <input type="radio" id="creditCompte" name="creditType" value="compte"  oninput="afficherLookup()"checked>
+                      <input type="radio" id="creditCompte" name="creditType" value="Crédit porté au compte"  oninput="afficherLookup()"checked>
                       <label for="radio">Crédit porté au compte</label>
                     </div>
                     <div class="radio-options-2">
-                      <input type="radio" id="creditMagasin" name="creditType" value="magasin" oninput="afficherLookup()">
+                      <input type="radio" id="creditMagasin" name="creditType" value="Crédit en magasin" oninput="afficherLookup()">
                       <label for="radio">Crédit en magasin</label>
                     </div>
                   </div>
@@ -1004,6 +1773,328 @@
       </div>
       
 </div>
+    
+  </div>
+  
+  <div class="print">
+  
+    <div class="margin">
+      
+      <div class="p-header">
+
+        <div class="p-header-image">
+          <img id="p-header-image" src="https://i.imgur.com/Hq4dBh6.png"></img>
+        </div>
+        
+        <div class="p-header-titre">
+          Devis express
+        </div>
+        
+      </div>
+      
+      <div class="p-service">
+        
+        <div class="p-service-boutique">
+          <div class="p-service-boutique-1" id="import-service-store1">Magasin : Non spécifié</div>
+          <div class="p-service-boutique-2" id="import-service-store2">Adresse (ligne 1) : Non spécifiée</div>
+          <div class="p-service-boutique-3" id="import-service-store3">Adresse (ligne 2) : Non spécifiée</div>
+          <div class="p-service-boutique-4" id="import-service-store4">Numéro de téléphone : Non spécifié</div>
+        </div>
+        
+        <div class="p-service-infos">
+          <div class="p-service-infos-1">
+            <div class="p-service-infos-1-1">Votre conseiller :</div>
+            <div id="import-service-rep"></div>
+          </div>
+          <div class="p-service-infos-2">
+            <div class="p-service-infos-2-1">Date du jour :</div>
+            <div id="import-service-date"></div>
+          </div>
+        </div>
+        
+      </div>
+      
+      <fieldset class="p-appareil">
+        
+        <legend>Votre appareil</legend>
+        
+        <div class="p-appareil-content">
+        
+          <div class="p-appareil-infos">
+            <div style="font-weight: bold; margin-top: 5px;" id="import-appareil-model"></div>
+            
+            <div class="p-appareil-infos-mensualite">
+              <div class="p-appareil-infos-mensualite-1">
+                Mensualité : 
+              </div>
+              <div class="p-appareil-infos-mensualite-1">
+                <div id="import-appareil-mensualite"></div>
+              </div>
+            </div>
+            
+            <div class="p-appareil-infos-acompte">
+              <div class="p-appareil-infos-acompte-1">
+                Acompte : 
+              </div>
+              <div class="p-appareil-infos-acompte-1">
+                <div id="import-appareil-acompte"></div>
+              </div>
+            </div>    
+                
+            <div class="p-appareil-infos-protection">
+              <div class="p-appareil-infos-protection-1">
+                Protection :
+              </div>
+              <div class="p-appareil-infos-protection-etat">
+                <div id="import-appareil-protection1"></div>
+              </div>
+              <div class="p-appareil-infos-protection-prix">
+                <div id="import-appareil-protection2"></div>
+              </div>
+            </div>
+              
+            <div class="p-appareil-infos-type">
+              <div class="p-appareil-infos-type-financement">
+                Type de financement :
+              </div>
+              <div class="p-appareil-infos-type-type">
+                <div id="import-appareil-type"></div>
+              </div>
+            </div>
+            
+          </div>
+
+          <div class="p-appareil-image">
+            <img id="import-appareil-image" src="" alt="Image de l'appareil" style="display: none;">
+          </div>
+          
+        </div>
+        
+      </fieldset>
+      
+      <fieldset class="p-forfait">
+        
+        <legend>Votre forfait</legend>
+        
+        <div class="p-forfait-content-1">
+        
+          <div class="p-forfait-type">
+            <div id="import-forfait-type"></div>
+          </div> 
+
+          <div class="p-forfait-content-2">
+            
+            <div class="p-forfait-donnees">
+              <div class="p-forfait-donnees-1">
+                Données :
+              </div>
+              <div class="p-forfait-donnees-2">
+                <div id="import-forfait-donnees"></div>
+              </div>
+              <div class="p-forfait-donnees-3">
+                Go
+              </div>
+            </div>
+
+            <div class="p-forfait-mensualite">
+              <div class="p-forfait-mensualite-1">
+                Mensualité :
+              </div>
+              <div class="p-forfait-mensualite-2">
+                <div id="import-forfait-mensualite"></div>
+              </div>
+            </div>
+
+          </div> 
+          
+        </div>
+        
+      </fieldset>
+      
+      <div class="p-options-rabais">
+        
+        <fieldset class="p-options">
+          
+          <legend>Vos options</legend>
+          
+          <div class="p-options-content">
+            
+            <div class="p-options-descriptions">
+              <div class="p-options-description-1">
+                <div id="import-options-desc1"></div>
+              </div>
+              <div class="p-options-description-2">
+                <div id="import-options-desc2"></div>
+              </div>
+              <div class="p-options-description-3">
+                <div id="import-options-desc3"></div>
+              </div>
+            </div>
+            
+            <div class="p-options-mensualites">
+              <div class="p-options-mensualite-1">
+                <div id="import-options-mens1"></div>
+              </div>
+              <div class="p-options-mensualite-2">
+                <div id="import-options-mens2"></div>
+              </div>
+              <div class="p-options-mensualite-3">
+                <div id="import-options-mens3"></div>
+              </div>
+            </div>
+            
+          </div>
+          
+        </fieldset>
+        
+        <fieldset class="p-rabais">
+          
+          <legend>Vos rabais</legend>
+          
+          <div class="p-rabais-content">
+            
+            <div class="p-rabais-descriptions">
+              <div class="p-rabais-description-1">
+                <div id="import-rabais-desc1"></div>
+              </div>
+              <div class="p-rabais-description-2">
+                <div id="import-rabais-desc2"></div>
+              </div>
+              <div class="p-rabais-description-3">
+                <div id="import-rabais-desc3"></div>
+              </div>
+            </div>
+            
+            <div class="p-rabais-mensualites">
+              <div class="p-rabais-mensualite-1">
+                <div id="import-rabais-mens1"></div>
+              </div>
+              <div class="p-rabais-mensualite-2">
+                <div id="import-rabais-mens2"></div>
+              </div>
+              <div class="p-rabais-mensualite-3">
+                <div id="import-rabais-mens3"></div>
+              </div>
+            </div>
+            
+          </div>
+          
+        </fieldset>
+        
+      </div>
+      
+      <fieldset class="p-echange">
+        
+        <legend>Échange d'appareil</legend>
+        
+        <div class="p-echange-content">
+          
+          <div class="p-echange-infos">
+            <div class="p-echange-infos-1">
+              <div class="p-echange-infos-1-1">
+                Appareil :
+              </div>  
+              <div class="p-echange-infos-1-2">  
+                <div id="import-echange-appareil">Non applicable</div>
+              </div>
+            </div>
+            <div class="p-echange-infos-2">
+              <div class="p-echange-infos-2-1">
+                Valeur d'échange :
+              </div>  
+              <div class="p-echange-infos-2-2">  
+                <div id="import-echange-valeur">0,00 $</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-echange-type">
+            <div class="p-echange-type-1">
+              Type de crédit :
+            </div>
+            <div class="p-echange-type-2">
+              <div id="import-echange-type"></div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </fieldset>
+      
+      <div class="p-resume-aujourdhui">
+        
+        <fieldset class="p-resume">
+          
+          <legend>Résumé mensuel</legend>
+          
+          <div class="p-resume-content">
+            
+            <div class="p-resume-col1">
+              <div class="p-resume-col1-1">
+                Appareil : <div style="margin-left: 5px;" id="import-resume-appareil">0,00 $</div>
+              </div>
+              <div class="p-resume-col1-2">
+                Forfait : <div style="margin-left: 5px;" id="import-resume-forfait">0,00 $</div>
+              </div>
+              <div class="p-resume-col1-3">
+                Options : <div style="margin-left: 5px;" id="import-resume-options">0,00 $</div>
+              </div>
+              <div class="p-resume-col1-4">
+                Rabais : -<div style="margin-left: 0px;" id="import-resume-rabais">0,00 $</div>
+              </div>
+            </div>
+            
+            <div class="p-resume-col2">
+              <div class="p-resume-col2-1">
+                <div><p>Sous-total : <span id="import-resume-soustotal">0,00 $</span></p></div>
+              </div>
+              <div class="p-resume-col2-2">
+                <div><p>Taxes : <span id="import-resume-taxes">0,00 $</span></p></div>
+              </div>
+              <div class="p-resume-col2-3">
+              </div>
+              <div class="p-resume-col2-4">
+                <div><p>Total : <span id="import-resume-total">0,00 $</span></p></div>
+              </div>
+            </div>
+            
+          </div>
+          
+        </fieldset>
+        
+        <fieldset class="p-aujourdhui">
+          
+          <legend>Dû aujourd'hui</legend>
+          
+          <div class="p-aujourdhui-content">
+            
+            <div class="p-aujourdhui-1">
+              <p>Montant de l'acompte : <span id="import-aujourdhui-acompte">0,00$</span></p>
+            </div>
+            
+            <div class="p-aujourdhui-2">
+              <p>Taxes : <span id="import-aujourdhui-taxes">0,00$</span></p>
+            </div>
+            
+            <div class="p-aujourdhui-3">
+              <p>Total de l'acompte : <span id="import-aujourdhui-totalacompte">0,00$</span></p>
+            </div>
+            
+            <div class="p-aujourdhui-4">
+              <p>À payer aujourd'hui : <span id="import-aujourdhui-aujourdhui">0,00$</span></p>
+            </div>
+            
+          </div>
+          
+        </fieldset>
+        
+      </div>
+      
+      <div class="p-footer">
+        Ce document est fourni à titre informatif seulement et ne constitue pas une offre, une promesse de prix, ni un engagement contractuel de la part de Rogers Communications Canada ou de ses représentants. Les prix, offres et détails des services demeurent sujets à modification sans préavis, et les montants indiqués peuvent varier en fonction des politiques officielles de Rogers Communications Canada.
+      </div>
+      
+    </div>
     
   </div>
   
@@ -1142,6 +2233,7 @@
 
       // Définir la valeur du champ de date par défaut à aujourd'hui
       document.getElementById('date').value = getTodayDate();
+      document.getElementById('import-service-date').value = getTodayDate();
 
       async function fetchStoreData() {
         const storeNumber = document.getElementById('storeNumber').value;
@@ -1162,12 +2254,20 @@
         document.getElementById('storeAddress1').innerText = '';
         document.getElementById('storeAddress2').innerText = '';
         document.getElementById('storePhone').innerText = '';
+        document.getElementById('import-service-store1').innerText = '';
+        document.getElementById('import-service-store2').innerText = '';
+        document.getElementById('import-service-store3').innerText = '';
+        document.getElementById('import-service-store4').innerText = '';
 
         if (store) {
           document.getElementById('storeName').innerText = store.name;
           document.getElementById('storeAddress1').innerText = store.address1;
           document.getElementById('storeAddress2').innerText = store.address2;
           document.getElementById('storePhone').innerText = formatPhoneNumber(store.phone);
+          document.getElementById('import-service-store1').innerText = store.name;
+          document.getElementById('import-service-store2').innerText = store.address1;
+          document.getElementById('import-service-store3').innerText = store.address2;
+          document.getElementById('import-service-store4').innerText = formatPhoneNumber(store.phone);
         } else {
           storeInfoDiv.innerHTML = '<p>Aucune boutique trouvée avec ce numéro.</p>';
         }
@@ -1230,6 +2330,7 @@
     function showPhoneDetails() {
       const selectedPhone = document.getElementById('phoneList').value;
       const phoneImage = document.getElementById('phoneImage');
+      const phoneImage2 = document.getElementById('import-appareil-image'); //IMPORT
       const phonePrice = document.getElementById('phonePrice');
       const protectionPrice = document.getElementById('protectionPrice');
       const protectionCheckbox = document.getElementById('protectionCheckbox');
@@ -1237,14 +2338,18 @@
 
       // Chercher l'appareil correspondant dans les données
       const phone = phonesData.find(p => p.Nom === selectedPhone);
+      const phone2 = phonesData.find(p => p.Nom === selectedPhone); //IMPORT
 
       if (phone) {
         // Afficher l'image si elle existe
         if (phone.ImageURL) {
           phoneImage.src = phone.ImageURL;  // Définir l'URL de l'image
+          phoneImage2.src = phone2.ImageURL;  // Définir l'URL de l'image //IMPORT
           phoneImage.style.display = 'block';  // Afficher l'image
+          phoneImage2.style.display = 'block';  // Afficher l'image //IMPORT
         } else {
           phoneImage.style.display = 'none';  // Masquer l'image si aucune URL
+          phoneImage2.style.display = 'none';  // Masquer l'image si aucune URL //IMPORT
         }
 
         // Afficher le plein prix s'il existe
@@ -1273,6 +2378,7 @@
         // Fonction pour calculer et afficher le prix de la protection
         function showProtectionPrice() {
           const protectionPrice = document.getElementById('protectionPrice');
+          const protectionPrice2 = document.getElementById('import-appareil-protection2'); //IMPORT
           if (this.checked) {  // Si la case est cochée
             if (selectedPrice < 600) {
               protectionPriceAmount = 7.99;
@@ -1286,12 +2392,15 @@
 
             const formattedProtection = new Intl.NumberFormat('fr-CA', { style: 'currency', currency: 'CAD' }).format(protectionPriceAmount);
             protectionPrice.textContent = `(${formattedProtection})`;
+            protectionPrice2.textContent = `(${formattedProtection})`; //IMPORT
             protectionPrice.style.display = 'block';  // Afficher le prix de la protection
+            protectionPrice2.style.display = 'block';  // Afficher le prix de la protection
 
             // Mettre à jour le total
             updateTotal();
           } else {
             protectionPrice.style.display = 'none';  // Masquer le prix si décoché
+            protectionPrice2.style.display = 'block';  // Masquer le prix si décoché //IMPORT
             protectionPriceAmount = 0;  // Réinitialiser le montant de la protection
             updateTotal();  // Mettre à jour le total sans protection
           }
@@ -1307,7 +2416,9 @@
 
           const formattedTotal = new Intl.NumberFormat('fr-CA', { style: 'currency', currency: 'CAD' }).format(total);
           const totalAmountDiv = document.getElementById('totalAmount');
+          const totalAmountDiv2 = document.getElementById('import-resume-appareil'); //IMPORT
           totalAmountDiv.textContent = `Total pour l'appareil : ${formattedTotal}`;
+          totalAmountDiv2.textContent = `${formattedTotal}`; //IMPORT
         }
 
         // Fonction pour reformater les valeurs des champs de saisie en format monétaire
@@ -1359,9 +2470,11 @@
           this.value = montant.toLocaleString('fr-CA', { style: 'currency', currency: 'CAD' });
           // Mettre à jour le total pour le forfait
           document.getElementById('total').textContent = montant.toLocaleString('fr-CA', { style: 'currency', currency: 'CAD' });
+          document.getElementById('import-resume-forfait').textContent = montant.toLocaleString('fr-CA', { style: 'currency', currency: 'CAD' }); //IMPORT
         } else {
           this.value = '';
           document.getElementById('total').textContent = '0,00 $';
+          document.getElementById('import-resume-forfait').textContent = '0,00 $'; //IMPORT
         }
       });  
       
@@ -1428,6 +2541,7 @@
         }
       });
       document.getElementById('total-amount-option').innerText = total.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
+      document.getElementById('import-resume-options').innerText = total.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$'; //IMPORT
     }  
       
     // RABAIS
@@ -1493,6 +2607,7 @@
         }
       });
       document.getElementById('total-amount-rabais').innerText = total.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
+      document.getElementById('import-resume-rabais').innerText = total.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$'; //IMPORT
     }
 
     function formatMontant(input) {
@@ -1552,8 +2667,11 @@
 
       // Mettre à jour le montant de l'acompte et les taxes
       document.getElementById("montantAcompte").textContent = acompteValue.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
+      document.getElementById("import-aujourdhui-acompte").textContent = acompteValue.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$'; //IMPORT
       document.getElementById("montantTaxes").textContent = taxes.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
+      document.getElementById("import-aujourdhui-taxes").textContent = taxes.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$'; //IMPORT
       document.getElementById("totalAcompte").textContent = (acompteValue + taxes).toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
+      document.getElementById("import-aujourdhui-totalacompte").textContent = (acompteValue + taxes).toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$'; //IMPORT
 
       // Mettre à jour le total à payer aujourd'hui
       updateAPayerAujourdHui(acompteValue + taxes);
@@ -1590,6 +2708,7 @@
     const montantTaxes = document.getElementById("montantTaxes");
     const totalAcompte = document.getElementById("totalAcompte");
     const aPayerAujourdHui = document.getElementById("aPayerAujourdHui");
+    const aPayerAujourdHui2 = document.getElementById("import-aujourdhui-aujourdhui");
     const taxeRate = 0.14975; // 14,975%
 
     creditMagasin.addEventListener("change", function() {
@@ -1615,6 +2734,7 @@
 
     function updateAPayerAujourdHui(montant) {
       aPayerAujourdHui.textContent = montant.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
+      aPayerAujourdHui2.textContent = montant.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
     }
 
     // Écouter les modifications sur le champ acompte
@@ -1634,8 +2754,11 @@
         const totalRabais = document.getElementById('total-amount-rabais').textContent;
         const rabaisResume = document.getElementById('resumeRabais');
         const subtotalResume = document.getElementById('resumeSubtotal'); // Élément pour le sous-total
+        const subtotalResume2 = document.getElementById('import-resume-soustotal'); // Élément pour le sous-total //IMPORT
         const taxesResume = document.getElementById('resumeTaxes'); // Élément pour les taxes
+        const taxesResume2 = document.getElementById('import-resume-taxes'); // Élément pour les taxes //IMPORT
         const totalMensuelResume = document.getElementById('resumeTotalMensuel'); // Élément pour le total mensuel
+        const totalMensuelResume2 = document.getElementById('import-resume-total'); // Élément pour le total mensuel //IMPORT
 
       // Extraire les montants
       const montantAppareil = parseFloat(totalAppareil.match(/\d[\d\s]*,\d{2}/)?.[0].replace(/\s/g, '')?.replace(',', '.') || 0);
@@ -1651,15 +2774,21 @@
 
       // Calculer le sous-total
       const sousTotal = montantAppareil + montantForfait + montantOptions + montantRabais;
+      const sousTotal2 = montantAppareil + montantForfait + montantOptions + montantRabais; //IMPORT
       subtotalResume.textContent = `${sousTotal.toFixed(2).replace('.', ',')} $`; // Mettre à jour la section sous-total
+      subtotalResume2.textContent = `${sousTotal.toFixed(2).replace('.', ',')} $`; // Mettre à jour la section sous-total //IMPORT
 
       // Calculer les taxes
       const taxes = sousTotal * 0.14975; // 14,975% du sous-total
+      const taxes2 = sousTotal * 0.14975; // 14,975% du sous-total //IMPORT
       taxesResume.textContent = `${taxes.toFixed(2).replace('.', ',')} $`; // Mettre à jour la section taxes
+      taxesResume2.textContent = `${taxes.toFixed(2).replace('.', ',')} $`; // Mettre à jour la section taxes //IMPORT
 
       // Calculer le total mensuel
       const totalMensuel = sousTotal + taxes;
+      const totalMensuel2 = sousTotal + taxes;
       totalMensuelResume.textContent = `${totalMensuel.toFixed(2).replace('.', ',')} $`; // Mettre à jour la section total mensuel
+      totalMensuelResume2.textContent = `${totalMensuel2.toFixed(2).replace('.', ',')} $`; // Mettre à jour la section total mensuel
   }
 
       // Appeler cette fonction chaque fois que le total de l'appareil est mis à jour
@@ -1685,7 +2814,9 @@
       var valeur8 = document.getElementById("choix4").value;
       // Affiche la valeur dans l'élément avec l'ID "affichage"
       document.getElementById("lookup-rep").innerText = valeur1;
+      document.getElementById("import-service-rep").innerText = valeur1; // IMPORT
       document.getElementById("lookup-date").innerText = valeur2;
+      document.getElementById("import-service-date").innerText = valeur2; // IMPORT
       document.getElementById("lookup-model").innerText = valeur3;
       document.getElementById("lookup-mensualiteAppareil").innerText = valeur4;
       document.getElementById("lookup-acompteAppareil").innerText = valeur5;
@@ -1702,6 +2833,8 @@
         // Affiche la valeur dans l'élément avec l'ID "affichage"
         document.getElementById("lookup-optionsDescription1").innerText = valeur9;
         document.getElementById("lookup-optionsMontant1").innerText = valeur10;
+        document.getElementById("import-options-desc1").innerText = valeur9;
+        document.getElementById("import-options-mens1").innerText = valeur10;
         }
       
       setInterval(afficherLookup3, 1000);
@@ -1712,6 +2845,8 @@
         // Affiche la valeur dans l'élément avec l'ID "affichage"
         document.getElementById("lookup-optionsDescription2").innerText = valeur9;
         document.getElementById("lookup-optionsMontant2").innerText = valeur10;
+        document.getElementById("import-options-desc2").innerText = valeur9;
+        document.getElementById("import-options-mens2").innerText = valeur10;
         }
       
       setInterval(afficherLookup4, 1000);
@@ -1722,6 +2857,8 @@
         // Affiche la valeur dans l'élément avec l'ID "affichage"
         document.getElementById("lookup-optionsDescription3").innerText = valeur9;
         document.getElementById("lookup-optionsMontant3").innerText = valeur10;
+        document.getElementById("import-options-desc3").innerText = valeur9;
+        document.getElementById("import-options-mens3").innerText = valeur10;
         }
       
       setInterval(afficherLookup5, 1000);
@@ -1732,6 +2869,8 @@
         // Affiche la valeur dans l'élément avec l'ID "affichage"
         document.getElementById("lookup-rabaisDescription1").innerText = valeur9;
         document.getElementById("lookup-rabaisMontant1").innerText = valeur10;
+        document.getElementById("import-rabais-desc1").innerText = valeur9;
+        document.getElementById("import-rabais-mens1").innerText = valeur10;
         }
       
       setInterval(afficherLookup6, 1000);
@@ -1742,6 +2881,8 @@
         // Affiche la valeur dans l'élément avec l'ID "affichage"
         document.getElementById("lookup-rabaisDescription2").innerText = valeur9;
         document.getElementById("lookup-rabaisMontant2").innerText = valeur10;
+        document.getElementById("import-rabais-desc2").innerText = valeur9;
+        document.getElementById("import-rabais-mens2").innerText = valeur10;
         }
       
       setInterval(afficherLookup7, 1000);
@@ -1752,6 +2893,8 @@
         // Affiche la valeur dans l'élément avec l'ID "affichage"
         document.getElementById("lookup-rabaisDescription3").innerText = valeur9;
         document.getElementById("lookup-rabaisMontant3").innerText = valeur10;
+        document.getElementById("import-rabais-desc3").innerText = valeur9;
+        document.getElementById("import-rabais-mens3").innerText = valeur10;
         }
       
       setInterval(afficherLookup8, 1000);
@@ -1761,7 +2904,9 @@
         var valeur10 = document.getElementById("valeurEchange").value;
         // Affiche la valeur dans l'élément avec l'ID "affichage"
         document.getElementById("lookup-echangeAppareil").innerText = valeur9;
+        document.getElementById("import-echange-appareil").innerText = valeur9; //IMPORT
         document.getElementById("lookup-echangeValeur").innerText = valeur10;
+        document.getElementById("import-echange-valeur").innerText = valeur10; //IMPORT
         }
       
       setInterval(afficherLookup9, 1000);
@@ -1778,6 +2923,7 @@
         var valeur9 = document.querySelector('input[name="creditType"]:checked').value;
         // Affiche la valeur dans l'élément avec l'ID "affichage"
         document.getElementById("lookup-echangeType").innerText = valeur9;
+        document.getElementById("import-echange-type").innerText = valeur9; //IMPORT
         }
       
       setInterval(afficherLookup11, 1000);
@@ -1805,7 +2951,31 @@
         // Affiche le prix si la case est cochée, sinon "0,00$"
         document.getElementById("lookup-prixProtection").innerText = valeur9 ? prix : "0,00 $";
         }
+    
+    // IMPORT
       
+    setInterval(importItems, 1000);
+        function importItems() {
+        // Vérifie
+        var valeur1 = document.getElementById("phoneList").value;
+        var valeur2 = document.getElementById("mensualite").value;
+        var valeur3 = document.getElementById("acompte").value;
+        var valeur4 = document.getElementById("protectionCheckbox").checked;
+        var valeur5 = document.querySelector('input[name="optionAchat"]:checked').value;
+        var valeur6 = document.getElementById("choix4").value;
+        var valeur7 = document.getElementById("mensualiteForfait").value;
+        var valeur8 = document.getElementById("donnees").value;
+        // Affiche
+        document.getElementById("import-appareil-model").innerText = valeur1;
+        document.getElementById("import-appareil-mensualite").innerText = valeur2;
+        document.getElementById("import-appareil-acompte").innerText = valeur3;
+        document.getElementById("import-appareil-protection1").innerText = valeur4 ? "Avec" : "Sans";
+        document.getElementById("import-appareil-type").innerText = valeur5;
+        document.getElementById("import-forfait-type").innerText = valeur6;
+        document.getElementById("import-forfait-mensualite").innerText = valeur7;
+        document.getElementById("import-forfait-donnees").innerText = valeur8;
+    }
+    
     </script>
   
 </body>
